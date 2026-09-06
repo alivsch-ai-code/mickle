@@ -76,9 +76,15 @@ Basis-Anwenderschulung:
 - [`rag-produktionsprobleme.md`](rag-produktionsprobleme.md) — sieben
   Fehlerquellen, die ein RAG-System erst im echten Betrieb zeigt
   (Chunking, Retrieval, Kontext, veraltetes Wissen, Zitate, Latenz).
+- [`rag-techniken.md`](rag-techniken.md) — sieben Techniken dagegen
+  (Hybrid Search, Reranking, Query Rewriting, Metadatenfilter,
+  Contextual Retrieval, Parent-Child Retrieval, Agentic RAG).
 - [`llm-fine-tuning.md`](llm-fine-tuning.md) — was hinter SFT, LoRA,
   QLoRA, DPO, RLHF, GRPO und Distillation technisch steckt, falls eine
   Fachperson oder ein Dienstleister Fine-Tuning vorschlägt.
+- [`llm-optimierung.md`](llm-optimierung.md) — sieben Techniken für
+  schnelleren, günstigeren Modellbetrieb (Quantisierung, KV-Cache,
+  Continuous Batching, spekulatives Dekodieren, Tensor-/Pipeline-Parallelität).
 
 ## Weiterführend
 

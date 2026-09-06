@@ -50,10 +50,14 @@ Zusätzlich zu Modulen 1–5 verantworten Sie:
   [`evaluation.md`](evaluation.md).
 - **Beim Bauen oder Betreiben eines RAG-Systems:** die sieben typischen
   Fehlerquellen aus dem Produktivbetrieb kennen —
-  [`rag-produktionsprobleme.md`](rag-produktionsprobleme.md).
+  [`rag-produktionsprobleme.md`](rag-produktionsprobleme.md) — und die
+  Gegentechniken dazu — [`rag-techniken.md`](rag-techniken.md).
 - **Wenn Fine-Tuning vorgeschlagen wird:** einschätzen können, was
   Verfahren wie LoRA oder DPO tatsächlich voraussetzen —
   [`llm-fine-tuning.md`](llm-fine-tuning.md).
+- **Beim Betrieb eines eigenen Modells:** einordnen können, was ein
+  Anbieter mit Quantisierung, Batching oder Parallelisierung verspricht —
+  [`llm-optimierung.md`](llm-optimierung.md).
 - **Auftragsverarbeitungsverträge und Serverstandorte** je Werkzeug
   dokumentieren und aktuell halten — [`recht/README.md`](../recht/README.md)
   und [`werkzeuge/README.md`](../werkzeuge/README.md).

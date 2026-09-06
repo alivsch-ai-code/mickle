@@ -91,6 +91,36 @@ mitgegeben. So kann ein Modell auch zu Inhalten antworten, die es nie
 | RAG | siehe Abschnitt 4 — Wissensanbindung, kein eigenständiger Systemtyp |
 | Foundation Model | großes, allgemein trainiertes Basismodell (z. B. GPT-, Claude-, Llama-Reihe), das per Prompting, RAG oder Fine-Tuning an eine konkrete Aufgabe angepasst wird |
 
+## 6. Das LLM-Ökosystem: Bausteine in Kombination
+
+Ein Sprachmodell wird selten allein eingesetzt. Die folgende Übersicht
+zeigt, welcher zusätzliche Baustein welches Ergebnis ermöglicht — als
+Landkarte, um eine Anbieter- oder Werkzeugbeschreibung einzuordnen, nicht
+als Empfehlung für jeden einzelnen Baustein.
+
+| LLM kombiniert mit … | ergibt … | kurz erklärt | vertieft in diesem Repo |
+| --- | --- | --- | --- |
+| Embeddings | Semantische Suche | Zahlendarstellung von Text, die Bedeutungsähnlichkeit misst (siehe Abschnitt 3) | [Abschnitt 3](#3-fine-tuning-prompting-embeddings--drei-unterschiedliche-wege) |
+| MCP (Model Context Protocol) | Werkzeugzugriff für das Modell | offener Standard, mit dem ein Modell definierte externe Werkzeuge/Datenquellen ansprechen kann | — |
+| Whisper | Sprache-zu-Text | offenes Transkriptionsmodell | [`werkzeuge/README.md`](../werkzeuge/README.md#transkription-audio-zu-text) |
+| Prompt Engineering | Bessere Antworten | gezielte Formulierung von Anweisung, Kontext und Format | [Modul 2](02-prompting.md) |
+| vLLM | Schnelle Inferenz | Serving-Software mit Continuous Batching und KV-Cache | [`llm-optimierung.md`](llm-optimierung.md) |
+| Guardrails | Kontrollierte, sichere Ausgaben | Regeln/Filter, die unerwünschte oder riskante Ausgaben vor der Auslieferung abfangen | [`sicherheit/README.md`](../sicherheit/README.md) |
+| Fine-Tuning | Spezialisiertes Modell | dauerhafte Anpassung des Modells an eigene Daten (siehe Abschnitt 3) | [`llm-fine-tuning.md`](llm-fine-tuning.md) |
+| Vector DB (Vektordatenbank) | RAG | Datenbank, die Embeddings speichert und durchsuchbar macht | [Abschnitt 4](#4-rag-retrieval-augmented-generation) |
+| LangGraph | KI-Agenten | Framework für zustandsbehaftete, kontrollierbare Agenten-Workflows | [`quellen/README.md`](../quellen/README.md#kuratierte-technische-auswahl-stand-2026-09-06) |
+| ElevenLabs | Sprachsynthese (Voice Generation) | Cloud-Dienst zur Erzeugung gesprochener Sprache aus Text | — |
+| FastAPI | KI-APIs | Python-Framework, mit dem ein Modellzugriff als eigene Programmierschnittstelle bereitgestellt wird | — |
+| Redis | Gesprächsgedächtnis (Conversation Memory) | schnelle Datenbank, die z. B. den bisherigen Gesprächsverlauf zwischenspeichert | — |
+| Opik | LLM-Evaluation | Plattform für Testdatensätze, Traces und Regressionstests | [`evaluation.md`](evaluation.md), [`quellen/README.md`](../quellen/README.md#kuratierte-technische-auswahl-stand-2026-09-06) |
+| Browser-Werkzeuge | Web-Agent | dem Modell wird ein Werkzeug zum Aufrufen/Bedienen von Webseiten gegeben | [`rag-techniken.md`, Agentic RAG](rag-techniken.md#7-agentic-rag) |
+
+Für MCP, ElevenLabs, FastAPI und Redis gibt es in diesem Repo noch keine
+eigene Vertiefung — sie sind hier nur eingeordnet, nicht geprüft oder
+empfohlen. Vor Einsatz gilt dieselbe Mindestprüfung wie bei jedem anderen
+Werkzeug: Lizenz, Serverstandort, Datenfluss (siehe
+[`werkzeuge/README.md`](../werkzeuge/README.md)).
+
 ## Weiter mit Modul 2
 
 [Modul 2: Prompting in der Praxis](02-prompting.md) — mit den vier

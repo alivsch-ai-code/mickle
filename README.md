@@ -76,7 +76,9 @@ häufigsten genannten Hemmnisse im Mittelstand. Quellen und Einordnung:
 | [`wirtschaftlichkeit/`](wirtschaftlichkeit/)           | Kostenmodelle, ROI-Rechnung, Anbietervergleich                                         |
 | [`grundlagen/evaluation.md`](grundlagen/evaluation.md) | Testsets, Messgrößen und Regressionstests für LLM-Anwendungen                          |
 | [`grundlagen/rag-produktionsprobleme.md`](grundlagen/rag-produktionsprobleme.md) | Sieben Fehlerquellen von RAG-Systemen im echten Betrieb (Chunking bis Latenz) |
+| [`grundlagen/rag-techniken.md`](grundlagen/rag-techniken.md) | Sieben Techniken gegen diese Fehlerquellen (Hybrid Search bis Agentic RAG) |
 | [`grundlagen/llm-fine-tuning.md`](grundlagen/llm-fine-tuning.md) | Sieben Fine-Tuning-Techniken (SFT, LoRA, QLoRA, DPO, RLHF, GRPO, Distillation) technisch eingeordnet |
+| [`grundlagen/llm-optimierung.md`](grundlagen/llm-optimierung.md) | Sieben Techniken für schnelleren, günstigeren Modellbetrieb (Quantisierung bis Pipeline-Parallelität) |
 | [`quellen/`](quellen/)                                 | Verwandte externe Projekte (Workflow-Sammlungen, Compliance-Vorlagen, Kostenrechner)   |
 | [`webseite/`](webseite/)                               | Eigenständige HTML-Seite, die das Repo zusammenfasst, mit eingebetteter KI-Auskunft   |
 

@@ -92,7 +92,9 @@ Repo automatisch antwortet.
 | Kostenrechnung, ROI, Anbietervergleich-Kriterien                          | [`wirtschaftlichkeit/`](wirtschaftlichkeit/)           |
 | Evaluation, Testsets, Messgrößen und Regressionen                         | [`grundlagen/evaluation.md`](grundlagen/evaluation.md) |
 | RAG-Fehlerquellen im Produktivbetrieb (Chunking, Retrieval, Latenz, Zitate) | [`grundlagen/rag-produktionsprobleme.md`](grundlagen/rag-produktionsprobleme.md) |
+| RAG-Techniken (Hybrid Search, Reranking, Query Rewriting, Agentic RAG u. a.) | [`grundlagen/rag-techniken.md`](grundlagen/rag-techniken.md) |
 | Fine-Tuning-Techniken (SFT, LoRA, QLoRA, DPO, RLHF, GRPO, Distillation)    | [`grundlagen/llm-fine-tuning.md`](grundlagen/llm-fine-tuning.md) |
+| LLM-Betriebsoptimierung (Quantisierung, KV-Cache, Batching, Parallelität) | [`grundlagen/llm-optimierung.md`](grundlagen/llm-optimierung.md) |
 | Vergleichbare externe Projekte, größere Workflow-Sammlungen               | [`quellen/`](quellen/)                                 |
 | Zusammenfassende Webseite mit KI-Auskunft (keine Repo-Quelle für Fakten)  | [`webseite/`](webseite/)                               |
 

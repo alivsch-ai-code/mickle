@@ -81,7 +81,10 @@ und [Haystack](https://github.com/deepset-ai/haystack/blob/main/docs-website/doc
 Für kleine lokale Installationen ist Ollama ein einfacher Einstieg. Für
 leistungsfähiges Serving mit vielen parallelen Anfragen sind [vLLM](https://github.com/vllm-project/vllm)
 oder [llama.cpp](https://github.com/ggml-org/llama.cpp) technische Alternativen.
-Sie lösen keine Modelllizenz-, Zugriffs- oder Datenschutzprüfung.
+Sie lösen keine Modelllizenz-, Zugriffs- oder Datenschutzprüfung. Was
+Techniken wie Quantisierung oder Continuous Batching, die in solchen
+Werkzeugen stecken, tatsächlich bewirken: siehe
+[`grundlagen/llm-optimierung.md`](../grundlagen/llm-optimierung.md).
 
 ## Texterkennung und Dokumentenverarbeitung (OCR)
 
