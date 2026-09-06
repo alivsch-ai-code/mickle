@@ -59,7 +59,7 @@ verwechselt:
 | --- | --- | --- |
 | Prompting | Das Modell bekommt Anweisung und Kontext bei jeder Anfrage neu mitgegeben, ohne dass sich das Modell selbst verändert | Regelfall für die meisten Anwendungsfälle in diesem Repo — kein technischer Zusatzaufwand |
 | Retrieval-Augmented Generation (RAG) | Passende Dokumente werden vor der Antwort automatisch gesucht und als Kontext mitgegeben (siehe Abschnitt 4) | Wenn betriebsinternes Wissen gebraucht wird, das im Prompt allein zu umfangreich wäre |
-| Fine-Tuning | Ein bestehendes Modell wird mit eigenen Beispieldaten zusätzlich trainiert und dadurch dauerhaft verändert | Selten für einen Betrieb dieser Größenordnung sinnvoll — hoher Aufwand, Daten- und Wartungsbedarf; vor einer Entscheidung prüfen, ob Prompting oder RAG das Problem nicht bereits löst |
+| Fine-Tuning | Ein bestehendes Modell wird mit eigenen Beispieldaten zusätzlich trainiert und dadurch dauerhaft verändert | Selten für einen Betrieb dieser Größenordnung sinnvoll — hoher Aufwand, Daten- und Wartungsbedarf; vor einer Entscheidung prüfen, ob Prompting oder RAG das Problem nicht bereits löst. Technische Vertiefung zu den gängigen Verfahren (SFT, LoRA, QLoRA, DPO, RLHF, GRPO, Distillation): [`llm-fine-tuning.md`](llm-fine-tuning.md) |
 | Embeddings | Zahlendarstellung von Text, die Bedeutungsähnlichkeit misst; technische Grundlage von RAG und semantischer Suche | Kein eigenständiges Werkzeug, sondern ein Baustein innerhalb von RAG-Systemen |
 
 ## 4. RAG (Retrieval-Augmented Generation)

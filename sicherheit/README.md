@@ -52,6 +52,10 @@ abzugleichen. Die frühere OWASP-2023-Fassung ist [archiviert](https://github.co
 - Quellenabschnitt und verwendete Dokument-IDs in der Antwort oder im Auditlog
   erhalten.
 
+Sieben konkrete Fehlerquellen, die diese Kontrollen im laufenden Betrieb
+nötig machen (Chunking, Retrieval, veraltetes Wissen, Kontext-Überlauf,
+erfundene Zitate, Latenz): [`grundlagen/rag-produktionsprobleme.md`](../grundlagen/rag-produktionsprobleme.md).
+
 ## 4. Pilotfreigabe
 
 Ein Pilot ist erst freigabefähig, wenn ein Testset, eine benannte fachliche

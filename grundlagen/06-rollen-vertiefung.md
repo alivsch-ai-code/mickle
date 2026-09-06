@@ -48,6 +48,12 @@ Zusätzlich zu Modulen 1–5 verantworten Sie:
 - **Messung statt Demo-Eindruck:** Ein Testset, Messgrößen und
   Regressionstests vor der Freigabe eines Systems —
   [`evaluation.md`](evaluation.md).
+- **Beim Bauen oder Betreiben eines RAG-Systems:** die sieben typischen
+  Fehlerquellen aus dem Produktivbetrieb kennen —
+  [`rag-produktionsprobleme.md`](rag-produktionsprobleme.md).
+- **Wenn Fine-Tuning vorgeschlagen wird:** einschätzen können, was
+  Verfahren wie LoRA oder DPO tatsächlich voraussetzen —
+  [`llm-fine-tuning.md`](llm-fine-tuning.md).
 - **Auftragsverarbeitungsverträge und Serverstandorte** je Werkzeug
   dokumentieren und aktuell halten — [`recht/README.md`](../recht/README.md)
   und [`werkzeuge/README.md`](../werkzeuge/README.md).

@@ -68,10 +68,17 @@ Prompt-Vorlagen für die Übungen in Modul 2 liegen in
 
 ## Nach der Schulung: technische Vertiefung
 
-[`evaluation.md`](evaluation.md) vertieft, wie ein KI-System vor dem
-Pilotbetrieb gemessen und danach überwacht wird — das ist Aufgabe der
-IT-/Datenschutzverantwortlichen (Modul 6), nicht Teil der
-Basis-Anwenderschulung.
+Für die IT-/Datenschutzverantwortlichen (Modul 6), nicht Teil der
+Basis-Anwenderschulung:
+
+- [`evaluation.md`](evaluation.md) — wie ein KI-System vor dem
+  Pilotbetrieb gemessen und danach überwacht wird.
+- [`rag-produktionsprobleme.md`](rag-produktionsprobleme.md) — sieben
+  Fehlerquellen, die ein RAG-System erst im echten Betrieb zeigt
+  (Chunking, Retrieval, Kontext, veraltetes Wissen, Zitate, Latenz).
+- [`llm-fine-tuning.md`](llm-fine-tuning.md) — was hinter SFT, LoRA,
+  QLoRA, DPO, RLHF, GRPO und Distillation technisch steckt, falls eine
+  Fachperson oder ein Dienstleister Fine-Tuning vorschlägt.
 
 ## Weiterführend
 
