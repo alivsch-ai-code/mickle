@@ -85,6 +85,10 @@ Basis-Anwenderschulung:
 - [`llm-optimierung.md`](llm-optimierung.md) — sieben Techniken für
   schnelleren, günstigeren Modellbetrieb (Quantisierung, KV-Cache,
   Continuous Batching, spekulatives Dekodieren, Tensor-/Pipeline-Parallelität).
+- [`agentische-systeme.md`](agentische-systeme.md) — Agenten-Muster
+  (ReAct, Planner-Executor, Reflection), Multi-Agenten-Orchestrierung mit
+  Kostenrealität (4- bis 15-fache Tokenmenge), Governance-Begriffe und
+  welche „Frontier"-Schlagworte mit Vorsicht zu lesen sind.
 
 ## Weiterführend
 

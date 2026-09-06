@@ -88,7 +88,9 @@ nicht spezifisch für RAG, siehe die Definition von KI-Agent in
 Leistungsfähiger als starres RAG, aber schwerer vorhersehbar und teurer
 im Betrieb (mehrere Modellaufrufe statt einem) — die Freigabepflicht aus
 [Modul 3, Abschnitt 6](03-grenzen-und-risiken.md#6-die-faustregel-für-jedes-ergebnis)
-gilt hier unverändert, eher verstärkt.
+gilt hier unverändert, eher verstärkt. Ausführlicher zu Agenten-Mustern
+und den tatsächlichen Mehrkosten mehrerer Agenten:
+[`agentische-systeme.md`](agentische-systeme.md).
 
 Quelle: [IBM, Agentic RAG](https://www.ibm.com/think/topics/agentic-rag).
 

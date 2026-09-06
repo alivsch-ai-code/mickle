@@ -58,6 +58,9 @@ Zusätzlich zu Modulen 1–5 verantworten Sie:
 - **Beim Betrieb eines eigenen Modells:** einordnen können, was ein
   Anbieter mit Quantisierung, Batching oder Parallelisierung verspricht —
   [`llm-optimierung.md`](llm-optimierung.md).
+- **Bei einem geplanten Agenten oder Multi-Agenten-System:** Muster,
+  Governance-Begriffe und die tatsächliche Kostenrealität kennen —
+  [`agentische-systeme.md`](agentische-systeme.md).
 - **Auftragsverarbeitungsverträge und Serverstandorte** je Werkzeug
   dokumentieren und aktuell halten — [`recht/README.md`](../recht/README.md)
   und [`werkzeuge/README.md`](../werkzeuge/README.md).

@@ -87,7 +87,7 @@ mitgegeben. So kann ein Modell auch zu Inhalten antworten, die es nie
 | --- | --- |
 | Chatbot | Konversationelle Oberfläche zu einem LLM, meist ohne eigene Handlungsfähigkeit |
 | Workflow (n8n/Make) | Fest programmierte Schrittfolge; KI ist nur ein Baustein darin |
-| KI-Agent | System, das selbst entscheidet, welche Werkzeuge/Schritte als Nächstes nötig sind, statt einer festen Schrittfolge zu folgen — dadurch flexibler, aber schwerer vorhersehbar |
+| KI-Agent | System, das selbst entscheidet, welche Werkzeuge/Schritte als Nächstes nötig sind, statt einer festen Schrittfolge zu folgen — dadurch flexibler, aber schwerer vorhersehbar. Technische Vertiefung zu Agenten-Mustern und Multi-Agenten-Systemen: [`agentische-systeme.md`](agentische-systeme.md) |
 | RAG | siehe Abschnitt 4 — Wissensanbindung, kein eigenständiger Systemtyp |
 | Foundation Model | großes, allgemein trainiertes Basismodell (z. B. GPT-, Claude-, Llama-Reihe), das per Prompting, RAG oder Fine-Tuning an eine konkrete Aufgabe angepasst wird |
 

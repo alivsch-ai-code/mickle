@@ -300,13 +300,14 @@
 
         <div id="panelChat" hidden>
           <div class="chat-transcript" id="transcriptChat">
-            <div class="msg system"><div class="msg-text">Ich beantworte Fragen zu dieser Schulung: den zwölf Lektionen, Anwendungsfällen, Recht, Werkzeugen und Kosten. Ich erfinde keine Preise oder Rechtsauskünfte — was nicht im Kurs steht, sage ich offen.</div></div>
+            <div class="msg system"><div class="msg-text">Ich beantworte Fragen zu dieser Schulung: den dreizehn Lektionen, Anwendungsfällen, Recht, Werkzeugen und Kosten. Ich erfinde keine Preise oder Rechtsauskünfte — was nicht im Kurs steht, sage ich offen.</div></div>
           </div>
           <div class="chips" id="chipsChat">
             <button class="chip" type="button">Ab wann gilt die Kennzeichnungspflicht für einen Kunden-Chatbot?</button>
             <button class="chip" type="button">Was ist der Unterschied zwischen RAG und Fine-Tuning?</button>
             <button class="chip" type="button">Welche der sieben RAG-Fehlerquellen betrifft erfundene Zitate?</button>
             <button class="chip" type="button">Lohnt sich Quantisierung für uns?</button>
+            <button class="chip" type="button">Wie viel teurer ist ein Multi-Agenten-System wirklich?</button>
             <button class="chip" type="button">Wie rechne ich die Kosten eines KI-Vorgangs?</button>
           </div>
           <form class="pill-form" id="formChat">
@@ -328,7 +329,7 @@
   <!-- ======================= VIEW: KURS ======================= -->
   <section class="view" id="view-kurs" hidden>
     <div class="section-head">
-      <div><div class="eyebrow"><code>grundlagen/</code></div><h2>Kurs: zwölf Lektionen</h2></div>
+      <div><div class="eyebrow"><code>grundlagen/</code></div><h2>Kurs: dreizehn Lektionen</h2></div>
       <div class="stand mono" id="courseStandNote">Fortschritt wird nur in diesem Browser gespeichert</div>
     </div>
 
@@ -339,7 +340,7 @@
         <div class="course-group-label">Technische Vertiefung</div>
         <ol id="courseNavVertiefung"></ol>
         <div class="course-progress">
-          <span id="progressText">0 / 12 gelesen</span>
+          <span id="progressText">0 / 13 gelesen</span>
           <div class="course-progress-bar"><div class="course-progress-fill" id="progressFill" style="width:0%"></div></div>
         </div>
       </nav>
@@ -899,6 +900,45 @@ Kundenanfrage: [E-Mail-Text]</div>
     <p>Diese Techniken betreffen den Betrieb eines Modells, nicht die Entscheidung, ob eines eingesetzt wird. Ein Anbieter, der "quantisiert" oder "batched", verspricht damit niedrigere Kosten oder Antwortzeit — keine höhere Genauigkeit.</p>
   `;
 
+  var LESSON_AS = `
+    <h2>Agentische Systeme: Muster, Governance, Grenzen</h2>
+    <p class="lead">Für IT-/Entwicklungsverantwortliche, die über den Einsatz eines KI-Agenten entscheiden oder einen bereits geplant haben.</p>
+
+    <h3>1. Von Retrieval zu Agenten</h3>
+    <p><strong>Classical RAG:</strong> feste Suche vor jeder Antwort. <strong>Graph RAG:</strong> Dokumente zusätzlich als Wissensgraph aus Entitäten/Beziehungen aufbereitet, für Fragen, die reine Ähnlichkeitssuche nicht löst. <strong>Agentic RAG:</strong> ein Agent entscheidet selbst, ob/wann/wie oft er nachschlägt.</p>
+    <p>Drei Gedächtnisarten bei Agenten: <strong>Kurzzeitgedächtnis</strong> (aktueller Verlauf), <strong>Langzeitgedächtnis</strong> (dauerhaft über Sitzungen hinweg), <strong>episodisches Gedächtnis</strong> (Erinnerung an vergangene Abläufe). Je mehr Gedächtnis, desto mehr wird ein Agent zur eigenen, pflegebedürftigen Datenbank — mit denselben Datenschutzfragen wie in Lektion 4. <span class="src">Quelle Graph RAG: Edge et al. (2024), arXiv:2404.16130</span></p>
+
+    <h3>2. Agenten-Muster</h3>
+    <ul>
+      <li><strong>ReAct-Loop:</strong> abwechselnd Denken und Handeln (Werkzeug aufrufen), Ergebnis beobachten, erneut denken. <span class="src">Quelle: Yao et al. (2022), arXiv:2210.03629</span></li>
+      <li><strong>Planner → Executor:</strong> erst vollständigen Plan erstellen, dann abarbeiten.</li>
+      <li><strong>Tool-Auswahl und -Routing:</strong> bei mehreren Werkzeugen das passende für die Teilaufgabe wählen.</li>
+      <li><strong>Reflection/Selbstkritik:</strong> eigenes Zwischenergebnis bewerten und nachbessern. <span class="src">Quelle: Shinn et al. (2023), arXiv:2303.11366</span></li>
+    </ul>
+    <p>Keines dieser Muster macht ein Ergebnis automatisch verlässlicher — die Prüfpflicht aus Lektion 3 gilt unverändert.</p>
+
+    <h3>3. Multi-Agenten-Orchestrierung</h3>
+    <p>Ein <strong>Orchestrator</strong> koordiniert mehrere spezialisierte Subagenten, die parallel an Teilaufgaben arbeiten: Ziel entgegennehmen, in Teilaufgaben zerlegen, an passende Subagenten verteilen (z. B. Recherche, Analyse, Planung, Ausführung, Prüfung), Ergebnisse einsammeln und zusammenfassen — von Anthropic als "Orchestrator-Workers" beschrieben.</p>
+    <p><strong>Der entscheidende Kostenpunkt:</strong> Laut Anthropics eigener Fallstudie verbrauchen einzelne Agenten etwa das 4-Fache der Tokens einer normalen Chat-Anfrage, Multi-Agenten-Systeme etwa das <strong>15-Fache</strong> — jeder Subagent ist ein eigener, bezahlter Modellaufruf. Für die Kostenrechnung aus der Referenz: die Tokenmenge nicht wie eine einzelne Anfrage schätzen.</p>
+    <p><strong>Ausdrückliche Warnung derselben Quelle:</strong> zuerst die einfachste Lösung versuchen — "meist reicht die Optimierung einzelner Modellaufrufe bereits aus". Zusätzliche Komplexität nur, wenn eine einfachere Lösung nachweislich nicht ausreicht und der Mehraufwand messbar gerechtfertigt ist.</p>
+    <p class="src">Quellen: Anthropic, Building Effective Agents; Anthropic, How We Built Our Multi-Agent Research System</p>
+
+    <h3>4. Produktion und Governance</h3>
+    <div class="lesson-table-scroll"><table><thead><tr><th>Begriff</th><th>Bedeutung</th><th>Bereits behandelt</th></tr></thead><tbody>
+      <tr><td>Confidence Scoring</td><td>Sicherheitseinschätzung zu einer Aussage</td><td>ersetzt keine eigene Prüfung (Halluzination, Lektion 3)</td></tr>
+      <tr><td>Policy Gates</td><td>feste Regeln blockieren/erlauben eine Aktion</td><td>Referenz: Mindestkontrollen</td></tr>
+      <tr><td>Audit Trail / Decision Logs</td><td>nachvollziehbares Protokoll aller Entscheidungen</td><td>Referenz: Protokollierung</td></tr>
+      <tr><td>Eval &amp; Observability</td><td>Messung der Qualität, Beobachtung im Betrieb</td><td>Vertiefung „Evaluation"</td></tr>
+      <tr><td>Cost/Token Economics</td><td>laufende Kosten pro Vorgang</td><td>Referenz: Wirtschaftlichkeit</td></tr>
+    </tbody></table></div>
+
+    <h3>5. Ausblick: mit Vorsicht zu lesende Begriffe</h3>
+    <p>"Memory &amp; Learning Loops", "Self-Improving Agents", "Multi-Modal Reasoning" oder "Agentic Workflows at Scale" sind Forschungs- und Frühphasen-Themen, keine für einen Mittelstandsbetrieb etablierten Bausteine — Stand 2026-09-06 fehlen belastbare, unabhängige Praxisberichte in relevanter Größenordnung. Bei einem werbenden Anbieter: nach einer überprüfbaren Fallstudie fragen.</p>
+
+    <h3>6. Wenn Sie selbst entwickeln oder einen Dienstleister beurteilen</h3>
+    <p>Häufig genannte Kompetenzbereiche: klassische Softwareentwicklung, Umgang mit KI-Werkzeugen/Prompting, Produktverständnis, agentische/Multi-Agenten-Architektur (Abschnitte 2–3), Deployment und Monitoring (Abschnitt 4), Kommunikation mit Stakeholdern. Als grobe Checkliste brauchbar, kein geprüftes Modell. Entscheidender ist meist, ob eine Fachperson die Abschnitte 3 und 4 in eigenen Worten erklären kann.</p>
+  `;
+
   var LESSONS = [
     { id:'m1', group:'basis', title:'1 · Grundbegriffe', html: LESSON_M1 },
     { id:'m2', group:'basis', title:'2 · Prompting in der Praxis', html: LESSON_M2 },
@@ -911,7 +951,8 @@ Kundenanfrage: [E-Mail-Text]</div>
     { id:'rp', group:'vertiefung', title:'RAG in der Produktion: 7 Fehlerquellen', html: LESSON_RP },
     { id:'rt', group:'vertiefung', title:'RAG-Techniken: 7 Bausteine', html: LESSON_RT },
     { id:'ft', group:'vertiefung', title:'LLM-Fine-Tuning: 7 Techniken', html: LESSON_FT },
-    { id:'lo', group:'vertiefung', title:'LLM-Optimierung: 7 Techniken', html: LESSON_LO }
+    { id:'lo', group:'vertiefung', title:'LLM-Optimierung: 7 Techniken', html: LESSON_LO },
+    { id:'as', group:'vertiefung', title:'Agentische Systeme', html: LESSON_AS }
   ];
 
   var courseState = { current: 'm1', done: {} };
@@ -983,7 +1024,7 @@ Kundenanfrage: [E-Mail-Text]</div>
 
   /* ================= Assistent: KB + Fragebogen + Chat ================= */
   var KB = "KONTEXT — Wissensbasis der interaktiven KI-Schulung Mittelstand\n\n" +
-    "Dies ist die Wissensbasis einer zwoelfteiligen KI-Schulung fuer den deutschen Mittelstand. Zielgruppe: Geschaeftsfuehrer, Abteilungsleiter, IT-Verantwortliche in Maschinenbau, Zulieferbetrieben, Ingenieurbueros, Logistik, Handwerk; Betriebe 10-500 Mitarbeiter ohne Data-Science-Team. Alle Beispiele beziehen sich auf die fiktive Muster Metallbau GmbH, 85 Mitarbeiter. Stand: 2026-09-06.\n\n" +
+    "Dies ist die Wissensbasis einer dreizehnteiligen KI-Schulung fuer den deutschen Mittelstand. Zielgruppe: Geschaeftsfuehrer, Abteilungsleiter, IT-Verantwortliche in Maschinenbau, Zulieferbetrieben, Ingenieurbueros, Logistik, Handwerk; Betriebe 10-500 Mitarbeiter ohne Data-Science-Team. Alle Beispiele beziehen sich auf die fiktive Muster Metallbau GmbH, 85 Mitarbeiter. Stand: 2026-09-06.\n\n" +
     "REGELN FUER IHRE ANTWORTEN (unbedingt einhalten):\n" +
     "- Antworten Sie auf Deutsch, in Sie-Form, kurze Saetze, keine Marketingsprache, keine Superlative, keine Emojis.\n" +
     "- Formatieren Sie als einfachen Text ohne Markdown-Sternchen oder Ueberschriften-Raute; fuer Aufzaehlungen einfache Gedankenstriche.\n" +
@@ -995,7 +1036,7 @@ Kundenanfrage: [E-Mail-Text]</div>
     "- Sie sind kein Ersatz fuer Rechts-, Steuer- oder Datenschutzberatung im Einzelfall.\n\n" +
     "DIE ZWOELF LEKTIONEN DIESES KURSES:\n" +
     "Basis (1-6 + Wissenscheck): 1 Grundbegriffe (LLM, Token, Kontextfenster, RAG, Fine-Tuning vs. Prompting, Halluzination, LLM-Oekosystem-Glossar mit MCP/LangGraph/Guardrails/Vector-DB u.a.). 2 Prompting (vier Grundprinzipien, Rollenprompt, Few-Shot, iteratives Nachbessern). 3 Grenzen und Risiken (Halluzination, Prompt Injection, Bias, wann NICHT einsetzen). 4 Datenschutz und Recht (AVV Art. 28 DSGVO, Kennzeichnungspflicht Art. 50 EU AI Act seit 2.8.2026, Uebergangsfrist bis 2.12.2026, Hochrisiko-Verbot Personenbewertung). 5 Werkzeuge im Unternehmen (Firmenwerkzeug vs. Schatten-KI, Freigabeliste, lokale Alternative). 6 Vertiefung nach Rolle (Anwender/in, Fuehrungskraft, IT-/Datenschutzverantwortliche). Wissenscheck: 15 Fragen mit Loesungsschluessel.\n" +
-    "Technische Vertiefung: Evaluation (Testset, Messgroessen, Regressionstests). RAG-Produktionsprobleme (7: Bad Chunking, Poor Retrieval, Lost in the Middle, Stale Knowledge, Context Overflow, Hallucinated Citations, Retrieval Latency). RAG-Techniken (7 Gegenmassnahmen: Hybrid Search, Reranking, Query Rewriting, Metadata Filtering, Contextual Retrieval, Parent-Child Retrieval, Agentic RAG). LLM-Fine-Tuning (7: SFT, LoRA, QLoRA, DPO, RLHF, GRPO, Distillation — fuer KMU meist nur SFT/LoRA/QLoRA ueber Dienstleister realistisch). LLM-Optimierung (7 Betriebstechniken: Quantisierung, Distillation, KV-Cache, Continuous Batching, Speculative Decoding, Tensor-/Pipeline-Parallelitaet).\n\n" +
+    "Technische Vertiefung: Evaluation (Testset, Messgroessen, Regressionstests). RAG-Produktionsprobleme (7: Bad Chunking, Poor Retrieval, Lost in the Middle, Stale Knowledge, Context Overflow, Hallucinated Citations, Retrieval Latency). RAG-Techniken (7 Gegenmassnahmen: Hybrid Search, Reranking, Query Rewriting, Metadata Filtering, Contextual Retrieval, Parent-Child Retrieval, Agentic RAG). LLM-Fine-Tuning (7: SFT, LoRA, QLoRA, DPO, RLHF, GRPO, Distillation — fuer KMU meist nur SFT/LoRA/QLoRA ueber Dienstleister realistisch). LLM-Optimierung (7 Betriebstechniken: Quantisierung, Distillation, KV-Cache, Continuous Batching, Speculative Decoding, Tensor-/Pipeline-Parallelitaet). Agentische Systeme (Classical/Graph/Agentic RAG, Gedaechtnistypen, Agenten-Muster ReAct/Planner-Executor/Reflection, Multi-Agenten-Orchestrierung mit Anthropic-Fallstudie: einzelne Agenten ca. 4x, Multi-Agenten-Systeme ca. 15x mehr Tokens als ein Chat-Aufruf — zuerst einfachere Loesung versuchen; Governance-Begriffe Confidence Scoring/Policy Gates/Audit Trail; Frontier-Begriffe wie Self-Improving Agents mit Vorsicht behandeln, da noch nicht produktionsreif fuer KMU).\n\n" +
     "ANWENDUNGSFAELLE-BACKLOG (10, alle Status 'Vorschlag', noch keiner ausgearbeitet): 1 Angebotserstellung, 2 Postfach-Zusammenfassung, 3 Standard-Kundenanfragen, 4 Belegerfassung, 5 Zahlungserinnerungen, 6 Meeting-/Baustellenprotokolle, 7 Wartungsberichte, 8 Uebersetzung technischer Dokumente, 9 Lieferanten-/Preisanfragen, 10 Vertriebs-/Angebotstexte.\n\n" +
     "WERKZEUGE: n8n (self-hostbar)/Make/Zapier fuer Workflows; Dify/Langflow fuer RAG+Agenten; Open WebUI+Ollama fuer lokale Chatoberflaeche; LiteLLM Gateway; vLLM/llama.cpp lokales Serving; RAGFlow/Haystack/LlamaIndex Dokumentensuche; Opik/DSPy Evaluation. Cloud-LLM: OpenAI, Anthropic, Mistral AI, Azure OpenAI (EU-Region waehlbar). Klassische Automatisierung (kein KI-Bezug, eigener Katalog): Ansible (GPL-3.0), Terraform (Business Source License seit 2023, NICHT mehr OSI-Open-Source, offene Alternative OpenTofu/Apache-2.0), Jenkins (MIT), OpenPLC, Node-RED, ccxt, QuantConnect Lean, HAPI FHIR, OpenMRS, Saleor, Magento Open Source/Adobe Commerce, Home Assistant, openHAB, ROS 2, ArduPilot, Rasa (laut eigenem Repo im Wartungsmodus), InstaPy (verwaist seit Dezember 2022, nicht empfohlen). Alle Preise [PRUEFEN].\n\n" +
     "RECHT: DSGVO (AVV Art. 28 sobald personenbezogene Daten verarbeitet werden); EU AI Act Art. 50 Kennzeichnungspflicht seit 2.8.2026, Bussgeldrahmen bis 15 Mio Euro/3% Jahresumsatz; Anhang III Hochrisiko (Bewerberauswahl, Leistungsbeurteilung, Bonitaetspruefung — deshalb kein Anwendungsfall dazu); Prompt Injection (OWASP GenAI LLM Top 10 2025); EU-AI-Act gilt NICHT fuer klassische Automatisierung ohne KI-Komponente.\n\n" +
@@ -1280,7 +1321,7 @@ Kundenanfrage: [E-Mail-Text]</div>
       renderFragebogen();
     } else {
       chatSession.turns = [];
-      chatSession.transcript.innerHTML = '<div class="msg system"><div class="msg-text">Ich beantworte Fragen zu dieser Schulung: den zwölf Lektionen, Anwendungsfällen, Recht, Werkzeugen und Kosten. Ich erfinde keine Preise oder Rechtsauskünfte — was nicht im Kurs steht, sage ich offen.</div></div>';
+      chatSession.transcript.innerHTML = '<div class="msg system"><div class="msg-text">Ich beantworte Fragen zu dieser Schulung: den dreizehn Lektionen, Anwendungsfällen, Recht, Werkzeugen und Kosten. Ich erfinde keine Preise oder Rechtsauskünfte — was nicht im Kurs steht, sage ich offen.</div></div>';
     }
   });
 

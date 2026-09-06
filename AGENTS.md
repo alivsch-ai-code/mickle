@@ -95,6 +95,7 @@ Repo automatisch antwortet.
 | RAG-Techniken (Hybrid Search, Reranking, Query Rewriting, Agentic RAG u. a.) | [`grundlagen/rag-techniken.md`](grundlagen/rag-techniken.md) |
 | Fine-Tuning-Techniken (SFT, LoRA, QLoRA, DPO, RLHF, GRPO, Distillation)    | [`grundlagen/llm-fine-tuning.md`](grundlagen/llm-fine-tuning.md) |
 | LLM-Betriebsoptimierung (Quantisierung, KV-Cache, Batching, Parallelität) | [`grundlagen/llm-optimierung.md`](grundlagen/llm-optimierung.md) |
+| Agenten-Muster, Multi-Agenten-Orchestrierung, Kostenrealität von Agenten | [`grundlagen/agentische-systeme.md`](grundlagen/agentische-systeme.md) |
 | Vergleichbare externe Projekte, größere Workflow-Sammlungen               | [`quellen/`](quellen/)                                 |
 | Zusammenfassende Webseite mit KI-Auskunft (keine Repo-Quelle für Fakten)  | [`webseite/`](webseite/)                               |
 

@@ -79,6 +79,7 @@ häufigsten genannten Hemmnisse im Mittelstand. Quellen und Einordnung:
 | [`grundlagen/rag-techniken.md`](grundlagen/rag-techniken.md) | Sieben Techniken gegen diese Fehlerquellen (Hybrid Search bis Agentic RAG) |
 | [`grundlagen/llm-fine-tuning.md`](grundlagen/llm-fine-tuning.md) | Sieben Fine-Tuning-Techniken (SFT, LoRA, QLoRA, DPO, RLHF, GRPO, Distillation) technisch eingeordnet |
 | [`grundlagen/llm-optimierung.md`](grundlagen/llm-optimierung.md) | Sieben Techniken für schnelleren, günstigeren Modellbetrieb (Quantisierung bis Pipeline-Parallelität) |
+| [`grundlagen/agentische-systeme.md`](grundlagen/agentische-systeme.md) | Agenten-Muster, Multi-Agenten-Orchestrierung mit realer Kostenrechnung, Governance-Begriffe |
 | [`quellen/`](quellen/)                                 | Verwandte externe Projekte (Workflow-Sammlungen, Compliance-Vorlagen, Kostenrechner)   |
 | [`webseite/`](webseite/)                               | Eigenständige HTML-Seite, die das Repo zusammenfasst, mit eingebetteter KI-Auskunft   |
 

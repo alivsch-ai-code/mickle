@@ -1,6 +1,6 @@
 # Webseite: KI-Schulung Mittelstand
 
-Eine einzelne, eigenständige HTML-Seite: eine interaktive, zwölfteilige
+Eine einzelne, eigenständige HTML-Seite: eine interaktive, dreizehnteilige
 Trainingswebsite auf Basis von [`grundlagen/`](../grundlagen/), mit einer
 eingebetteten KI-Auskunft (Fragebogen + Chat). Kein Build-Prozess, kein
 Server, keine Abhängigkeiten außer zwei Google-Fonts-Links.
@@ -18,25 +18,26 @@ Stand: 2026-09-06.
 | Bereich | Inhalt |
 | --- | --- |
 | **Auskunft** | Fragebogen und Chat (siehe unten) |
-| **Kurs** | Der eigentliche Kurs-Player: zwölf vollständige Lektionen mit Sidebar-Navigation und Fortschrittsanzeige |
+| **Kurs** | Der eigentliche Kurs-Player: dreizehn vollständige Lektionen mit Sidebar-Navigation und Fortschrittsanzeige |
 | **Referenz** | Kondensierte Zahlen/Tabellen aus `README.md`, `werkzeuge/`, `recht/`, `sicherheit/`, `wirtschaftlichkeit/`, `quellen/` |
 
 ### Der Kurs
 
 Anders als die frühere Fassung dieser Seite (die nur eine
 Ein-Satz-Zusammenfassung je Modul zeigte und auf die Markdown-Dateien
-verwies) enthält der Kurs-Player den **vollständigen Inhalt** aller zwölf
-Lektionen direkt auf der Seite — sinnvoll, weil eine besuchende Person die
-zugrunde liegenden `.md`-Dateien im Repository gar nicht einsehen kann.
-Zwölf Lektionen, gruppiert in der linken Navigationsleiste:
+verwies) enthält der Kurs-Player den **vollständigen Inhalt** aller
+dreizehn Lektionen direkt auf der Seite — sinnvoll, weil eine besuchende
+Person die zugrunde liegenden `.md`-Dateien im Repository gar nicht
+einsehen kann. Dreizehn Lektionen, gruppiert in der linken
+Navigationsleiste:
 
 - **Basis-Schulung:** die sechs Module aus `grundlagen/01`–`06` plus
   Wissenscheck (als aufklappbare Fragen/Antworten).
 - **Technische Vertiefung:** `evaluation.md`,
   `rag-produktionsprobleme.md`, `rag-techniken.md`, `llm-fine-tuning.md`,
-  `llm-optimierung.md`.
+  `llm-optimierung.md`, `agentische-systeme.md`.
 
-Der Lektionsinhalt liegt als HTML-Konstanten (`LESSON_M1` … `LESSON_LO`)
+Der Lektionsinhalt liegt als HTML-Konstanten (`LESSON_M1` … `LESSON_AS`)
 im `<script>`-Block von [`index.html`](index.html) — von Hand aus den
 jeweiligen `.md`-Dateien übertragen, keine automatische Konvertierung.
 Fortschritt ("gelesen") wird per `localStorage` im Browser der
@@ -73,7 +74,7 @@ Betreiber der Seite mitliest oder etwas konfigurieren muss.
 Beide Bausteine, die die KI nutzen, teilen sich dieselbe Grundlage
 (`script`-Block in [`index.html`](index.html)): eine feste
 Kontext-Zeichenkette (`KB`) mit der kondensierten Wissensbasis aller
-zwölf Lektionen plus Referenzdaten wird bei jedem Aufruf mitgeschickt —
+dreizehn Lektionen plus Referenzdaten wird bei jedem Aufruf mitgeschickt —
 die `sample`-Fähigkeit hat kein Gedächtnis zwischen Aufrufen, der Chat
 hängt seinen bisherigen Verlauf selbst wieder an. Die Regeln in `KB`
 erzwingen dieselben Grundsätze wie [`AGENTS.md`](../AGENTS.md): Sie-Form,
@@ -148,7 +149,7 @@ Seite mit KI-Auskunft bleibt der Claude-Artifact-Link oben maßgeblich.
 
 ## Grenzen
 
-- Kein Ersatz für das Repo selbst — Detailtiefe, die über die zwölf
+- Kein Ersatz für das Repo selbst — Detailtiefe, die über die dreizehn
   Lektionen hinausgeht (z. B. vollständige Anwendungsfall-Vorlage, alle
   Sicherheits-Mindestkontrollen), bleibt in den jeweiligen
   Markdown-Dateien.

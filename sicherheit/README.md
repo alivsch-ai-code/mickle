@@ -55,6 +55,9 @@ abzugleichen. Die frühere OWASP-2023-Fassung ist [archiviert](https://github.co
 Sieben konkrete Fehlerquellen, die diese Kontrollen im laufenden Betrieb
 nötig machen (Chunking, Retrieval, veraltetes Wissen, Kontext-Überlauf,
 erfundene Zitate, Latenz): [`grundlagen/rag-produktionsprobleme.md`](../grundlagen/rag-produktionsprobleme.md).
+Für Agenten und Multi-Agenten-Systeme gelten dieselben Mindestkontrollen,
+zusätzlich verschärft durch mehrere gleichzeitig handelnde Komponenten —
+siehe [`grundlagen/agentische-systeme.md`](../grundlagen/agentische-systeme.md).
 
 ## 4. Pilotfreigabe
 
