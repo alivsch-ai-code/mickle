@@ -67,7 +67,7 @@ Repo automatisch antwortet.
 
 | Frage bezieht sich auf …                                                  | Ordner                                                 |
 | ------------------------------------------------------------------------- | ------------------------------------------------------ |
-| Grundbegriffe (Was ist ein LLM/RAG/Agent), Schulung von Mitarbeitenden    | [`grundlagen/`](grundlagen/)                           |
+| Grundbegriffe (Was ist ein LLM/RAG/Agent), vollständige KI-Schulung inkl. Wissenscheck | [`grundlagen/`](grundlagen/)                           |
 | Ein konkretes Abteilungsproblem, Umsetzung, Kosten/Nutzen eines Falls     | [`anwendungsfaelle/`](anwendungsfaelle/)               |
 | Fertige Prompts zum Kopieren                                              | [`vorlagen/`](vorlagen/)                               |
 | Fertige n8n-/Make-Workflow-Dateien                                        | [`workflows/`](workflows/)                             |

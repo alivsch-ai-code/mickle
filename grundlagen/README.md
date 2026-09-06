@@ -1,110 +1,82 @@
-# Grundlagen: Schulungsmodul für Mitarbeitende
+# Grundlagen: KI-Schulung für Mitarbeitende
 
 Der Rest dieses Repositoriums verzichtet bewusst auf Grundlagenerklärungen
 — wer einen [Anwendungsfall](../anwendungsfaelle/) liest, will eine Lösung,
-keine Einführung. Dieser Ordner ist die ausdrückliche Ausnahme: ein
-Schulungsmodul für Mitarbeitende, die KI-gestützte Automatisierung im
-Betrieb tatsächlich bedienen, prüfen und verantworten sollen. Zielgruppe
-ist damit nicht die Geschäftsführung (die will Kosten/Nutzen, siehe
-[`wirtschaftlichkeit/`](../wirtschaftlichkeit/)), sondern die Person, die
-morgen den Prompt anpasst oder das Ergebnis freigibt.
+keine Einführung. Dieser Ordner ist die ausdrückliche Ausnahme: eine
+vollständige, in sich geschlossene KI-Schulung für Mitarbeitende, die
+KI-gestützte Automatisierung im Betrieb bedienen, prüfen oder verantworten.
 
 Stand: 2026-09-06. Kurze Sätze, Sie-Form, keine Marketingsprache — wie im
 gesamten Repo.
 
-## Lernpfad (drei Einheiten, je 30–45 Minuten)
+## Für wen diese Schulung gedacht ist
 
-| Einheit | Inhalt | Material |
-|---|---|---|
-| 1 | Grundbegriffe: LLM, Prompt, Token, Halluzination | dieser Ordner, Abschnitte 1–2 |
-| 2 | Prompting in der Praxis, mit echten Vorlagen | Abschnitt 3 + [`vorlagen/`](../vorlagen/) |
-| 3 | Grenzen, Fehlerquellen, Datenschutz, Freigabepflicht | Abschnitt 4–6 + [`recht/`](../recht/) |
+- **Anwenderinnen und Anwender**, die täglich mit einem KI-Werkzeug
+  arbeiten (Module 1–5 + Wissenscheck).
+- **Führungskräfte**, die Ergebnisse freigeben oder ein Budget
+  verantworten (Module 1–5 + Abschnitt "Führungskraft" in Modul 6).
+- **IT- und Datenschutzverantwortliche**, die ein Werkzeug einführen oder
+  betreiben (alle Module + Abschnitt "IT/Datenschutz" in Modul 6 +
+  [`evaluation.md`](evaluation.md)).
 
-## 1. Was ein Sprachmodell (LLM) tut — und was nicht
+Diese Schulung ersetzt keine Kosten-Nutzen-Betrachtung (dafür:
+[`wirtschaftlichkeit/`](../wirtschaftlichkeit/)) und keine Rechtsberatung
+(dafür: [`recht/`](../recht/)). Sie vermittelt das Wissen, das eine Person
+braucht, um mit einem KI-Werkzeug sicher zu arbeiten und zu erkennen, wann
+sie eine andere Stelle im Betrieb einschalten muss.
 
-Ein Large Language Model (LLM, z. B. GPT-, Claude- oder Mistral-Modelle)
-sagt auf Basis von Trainingsdaten das statistisch wahrscheinlichste
-nächste Wort voraus, wieder und wieder, bis eine vollständige Antwort
-entsteht. Daraus folgt unmittelbar:
+## Module
 
-- Es **versteht** eine Anfrage nicht im menschlichen Sinn, es setzt Muster
-  fort, die in ähnlichem Zusammenhang gelernt wurden.
-- Es kennt keine Fakten außerhalb seiner Trainingsdaten und ohne
-  zusätzliche Werkzeuge (siehe RAG, Abschnitt 2) auch keine aktuellen
-  betriebsinternen Informationen.
-- Es kann **selbstbewusst Falsches** produzieren ("Halluzination") — ein
-  falsches Datum, eine erfundene Norm, eine nicht existierende Telefonnummer
-  wirken sprachlich genauso sicher wie eine korrekte Angabe. Wie stark das
-  je nach Aufgabe ins Gewicht fällt, unterscheidet sich deutlich nach
-  Modell und Aufgabentyp (siehe Studienübersicht in
-  [`quellen/README.md`](../quellen/README.md#wissenschaftliche-studien)).
-- Die gleiche Eingabe kann bei zwei Durchläufen unterschiedliche Ausgaben
-  liefern (Nicht-Determinismus) — wichtig für alles, was reproduzierbar
-  sein muss (z. B. Buchhaltung).
+| # | Modul | Dauer | Datei |
+| - | --- | --- | --- |
+| 1 | Grundbegriffe: LLM, Token, RAG, Agent | ca. 30 Min. | [`01-grundbegriffe.md`](01-grundbegriffe.md) |
+| 2 | Prompting in der Praxis | ca. 45 Min. | [`02-prompting.md`](02-prompting.md) |
+| 3 | Grenzen und Risiken | ca. 30 Min. | [`03-grenzen-und-risiken.md`](03-grenzen-und-risiken.md) |
+| 4 | Datenschutz und Recht in Kürze | ca. 20 Min. | [`04-datenschutz-und-recht-in-kuerze.md`](04-datenschutz-und-recht-in-kuerze.md) |
+| 5 | Werkzeuge im Unternehmen | ca. 20 Min. | [`05-werkzeuge-im-unternehmen.md`](05-werkzeuge-im-unternehmen.md) |
+| 6 | Vertiefung nach Rolle | ca. 15–30 Min. | [`06-rollen-vertiefung.md`](06-rollen-vertiefung.md) |
+| — | Wissenscheck (Selbsttest, 15 Fragen) | ca. 15 Min. | [`wissenscheck.md`](wissenscheck.md) |
 
-## 2. RAG (Retrieval-Augmented Generation)
+Gesamtdauer für Module 1–6 plus Wissenscheck: ca. 3 bis 3,5 Stunden — passt
+als Selbststudium in zwei Sitzungen oder als Rahmen für einen
+Halbtags-Workshop (siehe [`schulungsleitfaden.md`](schulungsleitfaden.md)).
 
-RAG bedeutet: Bevor das Modell antwortet, werden passende Ausschnitte aus
-einer eigenen Dokumentensammlung (z. B. Firmenwiki, Handbücher,
-Auftragshistorie) automatisch gesucht und dem Modell als Kontext
-mitgegeben. So kann ein Modell auch zu Inhalten antworten, die es nie
-"gelernt" hat.
+Wer die Schulung nur als Selbststudium bearbeitet, sollte Module der Reihe
+nach lesen: Modul 2 baut auf Modul 1 auf, Modul 3 setzt Modul 2 voraus.
+Modul 6 ist rollenspezifisch und muss nicht vollständig gelesen werden —
+nur der jeweils passende Abschnitt.
 
-- **Löst:** das Problem fehlenden betriebsinternen Wissens, ohne ein
-  eigenes Modell trainieren zu müssen.
-- **Löst nicht:** Halluzination vollständig — das Modell kann den
-  gefundenen Kontext trotzdem falsch wiedergeben oder ergänzen. Siehe dazu
-  die Studie zu Halluzinationsraten bei dokumentenbasierten Abfragen in
-  [`quellen/README.md`](../quellen/README.md#wissenschaftliche-studien).
-- Relevant für den Backlog-Anwendungsfall "interne Wissenssuche über
-  Firmendokumente" in der Haupt-[README](../README.md).
-- Technische Umsetzung typischerweise über Frameworks wie LlamaIndex oder
-  Haystack, siehe [`quellen/README.md`](../quellen/README.md#etablierte-open-source-frameworks-für-eigene-technische-umsetzung).
+## Wie diese Schulung im Betrieb eingesetzt wird
 
-## 3. Prompting: die vier Grundprinzipien
+- **Selbststudium:** Module 1–6 der Reihe nach lesen, Wissenscheck am Ende
+  allein bearbeiten. Geeignet für einzelne neue Mitarbeitende.
+- **Präsenz- oder Video-Workshop:** Ablauf, Agenda mit Zeiten, benötigte
+  Übungen und eine Teilnahmebestätigung-Vorlage stehen in
+  [`schulungsleitfaden.md`](schulungsleitfaden.md). Geeignet, wenn mehrere
+  Personen gleichzeitig geschult werden oder ein Werkzeug neu eingeführt
+  wird.
+- **Auffrischung:** Wiederholen Sie mindestens Modul 3 und Modul 4, wenn
+  ein neues Werkzeug eingeführt wird, sich die Rechtslage ändert (siehe
+  Datumsangaben in [`recht/`](../recht/)) oder nach einem
+  Sicherheitsvorfall. Empfehlung für eine turnusmäßige Auffrischung:
+  jährlich.
 
-1. **Rolle und Ziel benennen** ("Sie sind ... Ihre Aufgabe ist ...").
-2. **Kontext mitgeben**, statt Wissen vorauszusetzen (den Text, die Daten,
-   das Beispiel direkt in den Prompt einfügen).
-3. **Format vorgeben** (Stichpunkte, Tabelle, feste Länge) — spart Zeit
-   beim Nachbearbeiten.
-4. **Ein Beispiel für die gewünschte Ausgabe** liefern, wenn das Format
-   ungewöhnlich ist.
+## Übungsmaterial
 
-Fertige, getestete Prompts für konkrete Aufgaben: siehe
-[`vorlagen/`](../vorlagen/).
+Prompt-Vorlagen für die Übungen in Modul 2 liegen in
+[`vorlagen/schulung-prompting-uebungen.md`](../vorlagen/schulung-prompting-uebungen.md).
 
-## 4. Begriffe, die im Alltag oft vermischt werden
+## Nach der Schulung: technische Vertiefung
 
-| Begriff | Bedeutung |
-|---|---|
-| Chatbot | Konversationelle Oberfläche zu einem LLM, meist ohne eigene Handlungsfähigkeit |
-| Workflow (n8n/Make) | Fest programmierte Schrittfolge; KI ist nur ein Baustein darin |
-| KI-Agent | System, das selbst entscheidet, welche Werkzeuge/Schritte als Nächstes nötig sind, statt einer festen Schrittfolge zu folgen — dadurch flexibler, aber schwerer vorhersehbar |
-| RAG | siehe Abschnitt 2 — Wissensanbindung, kein eigenständiger Systemtyp |
-
-## 5. Typische Fehlerquellen auf einen Blick
-
-- **Halluzination** — siehe Abschnitt 1.
-- **Prompt Injection** — manipulierte Eingaben aus externen Quellen
-  (E-Mails, Dokumente) können das Modell zu ungewollten Handlungen
-  verleiten. Details: [`recht/README.md`](../recht/README.md#4-technisches-risiko-manipulierte-eingaben-prompt-injection).
-- **Veraltetes oder falsches Wissen** ohne RAG-Anbindung.
-- **Bias**: Trainingsdaten enthalten gesellschaftliche Verzerrungen, die
-  das Modell reproduzieren kann — besonders relevant bei allem, was mit
-  Personenbewertung zu tun hat (siehe Hochrisiko-Hinweis in
-  [`recht/README.md`](../recht/README.md#3-eu-ai-act--hochrisiko-anwendungen-anhang-iii)).
-
-## 6. Bevor ein Ergebnis verwendet wird
-
-Jeder Anwendungsfall in diesem Repo benennt unter Punkt 6 ("Grenzen"),
-welche Rolle das Ergebnis vor Wirksamwerden prüfen muss. Als Faustregel
-für Mitarbeitende: Ein KI-generiertes Ergebnis ist ein **Entwurf**, keine
-Entscheidung — bis eine dafür verantwortliche Person es freigegeben hat.
+[`evaluation.md`](evaluation.md) vertieft, wie ein KI-System vor dem
+Pilotbetrieb gemessen und danach überwacht wird — das ist Aufgabe der
+IT-/Datenschutzverantwortlichen (Modul 6), nicht Teil der
+Basis-Anwenderschulung.
 
 ## Weiterführend
 
 Wissenschaftliche Studien und technische Frameworks zu den hier
 angerissenen Themen: [`quellen/README.md`](../quellen/README.md).
 Kosten- und Rechtsfragen vertiefend: [`wirtschaftlichkeit/`](../wirtschaftlichkeit/)
-und [`recht/`](../recht/).
+und [`recht/`](../recht/). Technische Sicherheitskontrollen:
+[`sicherheit/`](../sicherheit/).

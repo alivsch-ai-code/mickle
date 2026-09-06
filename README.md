@@ -48,9 +48,9 @@ häufigsten genannten Hemmnisse im Mittelstand. Quellen und Einordnung:
 
 | Ordner                                                 | Inhalt                                                                                 |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| [`grundlagen/`](grundlagen/)                           | Schulungsmodul für Mitarbeitende: LLM, RAG, Prompting, Fehlerquellen                   |
+| [`grundlagen/`](grundlagen/)                           | Vollständige KI-Schulung: 6 Module (Grundbegriffe, Prompting, Risiken, Recht, Werkzeuge, Rollen) + Wissenscheck + Schulungsleitfaden |
 | [`anwendungsfaelle/`](anwendungsfaelle/)               | Ein Ordner pro Anwendungsfall, benannt nach dem Problem                                |
-| [`vorlagen/`](vorlagen/)                               | Prompts zum Kopieren, thematisch sortiert                                              |
+| [`vorlagen/`](vorlagen/)                               | Prompts zum Kopieren, thematisch sortiert, inkl. Übungsprompts der Schulung           |
 | [`workflows/`](workflows/)                             | Exportierte n8n-/Make-Szenarien als JSON                                               |
 | [`werkzeuge/`](werkzeuge/)                             | Werkzeug- und Anbieterübersicht: Automatisierungsplattformen, LLM-APIs, lokale Modelle |
 | [`recht/`](recht/)                                     | DSGVO, Auftragsverarbeitung, EU AI Act Art. 50                                         |
