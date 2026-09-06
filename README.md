@@ -46,16 +46,18 @@ häufigsten genannten Hemmnisse im Mittelstand. Quellen und Einordnung:
 
 ## Struktur
 
-| Ordner | Inhalt |
-|---|---|
-| [`grundlagen/`](grundlagen/) | Schulungsmodul für Mitarbeitende: LLM, RAG, Prompting, Fehlerquellen |
-| [`anwendungsfaelle/`](anwendungsfaelle/) | Ein Ordner pro Anwendungsfall, benannt nach dem Problem |
-| [`vorlagen/`](vorlagen/) | Prompts zum Kopieren, thematisch sortiert |
-| [`workflows/`](workflows/) | Exportierte n8n-/Make-Szenarien als JSON |
-| [`werkzeuge/`](werkzeuge/) | Werkzeug- und Anbieterübersicht: Automatisierungsplattformen, LLM-APIs, lokale Modelle |
-| [`recht/`](recht/) | DSGVO, Auftragsverarbeitung, EU AI Act Art. 50 |
-| [`wirtschaftlichkeit/`](wirtschaftlichkeit/) | Kostenmodelle, ROI-Rechnung, Anbietervergleich |
-| [`quellen/`](quellen/) | Verwandte externe Projekte (Workflow-Sammlungen, Compliance-Vorlagen, Kostenrechner) |
+| Ordner                                                 | Inhalt                                                                                 |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| [`grundlagen/`](grundlagen/)                           | Schulungsmodul für Mitarbeitende: LLM, RAG, Prompting, Fehlerquellen                   |
+| [`anwendungsfaelle/`](anwendungsfaelle/)               | Ein Ordner pro Anwendungsfall, benannt nach dem Problem                                |
+| [`vorlagen/`](vorlagen/)                               | Prompts zum Kopieren, thematisch sortiert                                              |
+| [`workflows/`](workflows/)                             | Exportierte n8n-/Make-Szenarien als JSON                                               |
+| [`werkzeuge/`](werkzeuge/)                             | Werkzeug- und Anbieterübersicht: Automatisierungsplattformen, LLM-APIs, lokale Modelle |
+| [`recht/`](recht/)                                     | DSGVO, Auftragsverarbeitung, EU AI Act Art. 50                                         |
+| [`sicherheit/`](sicherheit/)                           | Technische Sicherheitskontrollen für LLM, RAG und Agenten                              |
+| [`wirtschaftlichkeit/`](wirtschaftlichkeit/)           | Kostenmodelle, ROI-Rechnung, Anbietervergleich                                         |
+| [`grundlagen/evaluation.md`](grundlagen/evaluation.md) | Testsets, Messgrößen und Regressionstests für LLM-Anwendungen                          |
+| [`quellen/`](quellen/)                                 | Verwandte externe Projekte (Workflow-Sammlungen, Compliance-Vorlagen, Kostenrechner)   |
 
 Für die Nutzung dieses Repos als Wissensbasis durch einen KI-Assistenten
 (nicht nur als Nachschlagewerk für Menschen) siehe [`AGENTS.md`](AGENTS.md).
@@ -69,18 +71,18 @@ Open-Source-Sammlungen (u. a. n8n-Workflow-Bibliotheken und
 Branchenleitfäden für Handwerk und Maschinenbau) sowie eigener Einschätzung
 der Zielbranchen — nicht aus Anbieterversprechen.
 
-| # | Anwendungsfall | Branche(n) | Einrichtungsaufwand | Status |
-|---|---|---|---|---|
-| 1 | Angebotserstellung aus Kundenanfragen | Handwerk, Zulieferer | niedrig (Stunden) | Vorschlag |
-| 2 | Tägliche E-Mail-Postfach-Zusammenfassung und Priorisierung | alle | niedrig | Vorschlag |
-| 3 | Automatische Beantwortung von Standard-Kundenanfragen (Auftragsstatus, Liefertermine) | alle, bes. Logistik | mittel | Vorschlag |
-| 4 | Belegerfassung und Buchhaltungsvorbereitung (Rechnungen, Lieferscheine) | alle | mittel | Vorschlag |
-| 5 | Vorbereitung von Zahlungserinnerungen (Mahnwesen) | alle | niedrig | Vorschlag |
-| 6 | Meeting- und Baustellenprotokolle aus Audioaufnahmen | Handwerk, Ingenieurbüro | mittel | Vorschlag |
-| 7 | Wartungsberichte und technische Kurzdokumentation | Maschinenbau, Zulieferer | mittel | Vorschlag |
-| 8 | Übersetzung technischer Dokumente und Kundenkorrespondenz | Zulieferer, Maschinenbau | niedrig | Vorschlag |
-| 9 | Lieferanten- und Preisanfragen bündeln und vergleichen | Einkauf, Logistik | mittel | Vorschlag |
-| 10 | Vertriebs- und Angebotstexte für Marketing | alle | niedrig | Vorschlag |
+| #   | Anwendungsfall                                                                        | Branche(n)               | Einrichtungsaufwand | Status    |
+| --- | ------------------------------------------------------------------------------------- | ------------------------ | ------------------- | --------- |
+| 1   | Angebotserstellung aus Kundenanfragen                                                 | Handwerk, Zulieferer     | niedrig (Stunden)   | Vorschlag |
+| 2   | Tägliche E-Mail-Postfach-Zusammenfassung und Priorisierung                            | alle                     | niedrig             | Vorschlag |
+| 3   | Automatische Beantwortung von Standard-Kundenanfragen (Auftragsstatus, Liefertermine) | alle, bes. Logistik      | mittel              | Vorschlag |
+| 4   | Belegerfassung und Buchhaltungsvorbereitung (Rechnungen, Lieferscheine)               | alle                     | mittel              | Vorschlag |
+| 5   | Vorbereitung von Zahlungserinnerungen (Mahnwesen)                                     | alle                     | niedrig             | Vorschlag |
+| 6   | Meeting- und Baustellenprotokolle aus Audioaufnahmen                                  | Handwerk, Ingenieurbüro  | mittel              | Vorschlag |
+| 7   | Wartungsberichte und technische Kurzdokumentation                                     | Maschinenbau, Zulieferer | mittel              | Vorschlag |
+| 8   | Übersetzung technischer Dokumente und Kundenkorrespondenz                             | Zulieferer, Maschinenbau | niedrig             | Vorschlag |
+| 9   | Lieferanten- und Preisanfragen bündeln und vergleichen                                | Einkauf, Logistik        | mittel              | Vorschlag |
+| 10  | Vertriebs- und Angebotstexte für Marketing                                            | alle                     | niedrig             | Vorschlag |
 
 Warten auf Auswahl, bevor Inhalte für einzelne Fälle entstehen.
 

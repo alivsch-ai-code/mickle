@@ -35,6 +35,43 @@ konkrete Pfad zuletzt geändert? Gibt es Tests oder nur Beispielcode? Welche
 Annahmen gelten für Datenschutz, Betrieb und Sicherheit? Eine Antwort
 übernimmt aus einem Repository nur die Aussage, die der konkrete Pfad trägt.
 
+## Kuratierte technische Auswahl, Stand 2026-09-06
+
+Die Sternzahlen sind ein Popularitätssignal aus GitHub, kein Qualitätsurteil.
+Sie wurden am 2026-09-06 abgelesen und veralten. Lizenz, Aktivität und
+Einsatzgrenzen sind wichtiger als die Reihenfolge.
+
+| Projekt                                                            |                                   GitHub-Snapshot | Wofür es technisch passt                                                                                                  | Für einen KMU-Pilot prüfen                                                                                                    |
+| ------------------------------------------------------------------ | ------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [Dify](https://github.com/langgenius/dify)                         |                 ca. 154,6k Sterne; Release 1.17.0 | Selbst hostbare Plattform für Workflows, RAG, Agenten, Modellverwaltung und LLMOps; Docker-Compose-Einstieg dokumentiert. | Dify Open Source License mit Zusatzbedingungen, Ressourcenbedarf, Secrets, Rollen und Datenablage prüfen.                     |
+| [Langflow](https://github.com/langflow-ai/langflow)                |                        ca. 154,3k; Release 1.12.0 | Visueller Builder für Agenten und Workflows, Python-Komponenten, API- und MCP-Bereitstellung.                             | Authentifizierung, Tool-Schutz, Mehrmandantenbetrieb und Exportierbarkeit der Flows prüfen.                                   |
+| [Open WebUI](https://github.com/open-webui/open-webui)             |                        ca. 151,1k; Release 0.11.3 | Self-hosted Oberfläche für Ollama und OpenAI-kompatible APIs, RBAC, lokale RAG- und Evaluationsfunktionen.                | Open-WebUI-Lizenz und Branding-Bedingungen, Dokumentenrechte, Datenbank, Backups und Tool-Zugriffe prüfen.                    |
+| [LangChain / LangGraph](https://github.com/langchain-ai/langchain) | ca. 145,8k; aktuelle LangChain-Core-Version 1.6.2 | Breites Entwickler-Ökosystem; LangGraph für kontrollierbare, zustandsbehaftete Agenten-Workflows.                         | Abstraktions- und Abhängigkeitsumfang, Tracing-Anbieter und Betriebsmodell prüfen.                                            |
+| [llama.cpp](https://github.com/ggml-org/llama.cpp)                 |                         ca. 127,2k; Release 0.4.0 | Lokale C/C++-Inference, Quantisierung, CPU/GPU-Hybridbetrieb und OpenAI-kompatibler Server.                               | Modelllizenz, Hardware, Quantisierungsqualität, Updates und Netzwerkzugriff absichern.                                        |
+| [vLLM](https://github.com/vllm-project/vllm)                       |                         ca. 91,1k; Release 0.28.0 | Hochdurchsatz-Serving für GPU-Infrastruktur, kontinuierliches Batching, strukturierte Ausgaben und OpenAI-kompatible API. | GPU-Kosten, CUDA-/Treiberbindung, Skalierungsbedarf und Betriebs-Know-how prüfen.                                             |
+| [RAGFlow](https://github.com/infiniflow/ragflow)                   |                         ca. 90,1k; Release 0.27.1 | Dokumentenlastige RAG-Anwendungen mit DeepDoc, Chunking, Quellenbezug, Agenten und MCP.                                   | Ressourcenbedarf, x86-Einschränkung der Images, externe LLM-/Embedding-Dienste und Sandbox-Konfiguration prüfen.              |
+| [OpenHands](https://github.com/OpenHands/OpenHands)                |                         ca. 86,3k; Release 1.16.0 | Coding-Agenten und Automatisierungen mit lokalen, Docker-, VM- oder Remote-Backends.                                      | Nicht als allgemeine Büroautomatisierung einsetzen; Sandbox, Dateirechte, Netzwerk und Kostenlimits zwingend prüfen.          |
+| [LiteLLM](https://github.com/BerriAI/litellm)                      |                        ca. 58,2k; Release 1.100.0 | LLM-Gateway für viele Anbieter, einheitliche API, Routing, Fallbacks, Kosten- und Zugriffskontrolle.                      | Proxy-Sicherheit, Schlüsselverwaltung, Logging personenbezogener Prompts und Lizenzumfang prüfen.                             |
+| [LlamaIndex](https://github.com/run-llama/llama_index)             |                        ca. 52,0k; Release 0.14.24 | Daten- und Agentenframework für Konnektoren, Indexierung, Retrieval, Dokumentverarbeitung und lokale Modelle.             | Integrationsanzahl, Paketpflege, Quellenzitate, Berechtigungstrennung und Cloud-Erweiterungen prüfen.                         |
+| [DSPy](https://github.com/stanfordnlp/dspy)                        |                          ca. 37,8k; Release 3.3.1 | Programmierbarer Ansatz für modulare LLM-Systeme und messbare Prompt-/Programmoptimierung.                                | Geeignet für Entwicklung und Evaluation, aber nicht allein eine Betriebsplattform; Testdatensatz und Kostenlimits definieren. |
+| [Haystack](https://github.com/deepset-ai/haystack)                 |                          ca. 26,4k; Release 3.1.1 | Modulare, explizite RAG- und Agentenpipelines mit Retrieval-, Routing-, Memory- und Evaluationskomponenten.               | Telemetrie deaktivieren oder bewerten, Self-Hosting-/Enterprise-Grenzen und Pipeline-Betrieb prüfen.                          |
+| [Opik](https://github.com/comet-ml/opik)                           |                         ca. 21,8k; Release 2.2.52 | Self-hostbare Observability- und Evaluationsplattform für Traces, Datensätze, LLM-as-a-judge und CI/CD-Tests.             | Prompt- und Trace-Aufbewahrung, personenbezogene Daten, Zugriffsschutz und Löschfristen prüfen.                               |
+| [Pydantic AI](https://github.com/pydantic/pydantic-ai)             |                         ca. 19,7k; Release 2.40.0 | Typisierte Agenten, strukturierte Ausgaben, Tool-Schemas, Evals und durable Workflows in Python.                          | Für Python-Entwicklung geeignet, aber eigene UI, Authentifizierung, Deployment- und Audit-Schicht erforderlich.               |
+
+### Nicht mehr als aktive Top-Auswahl führen
+
+- [Flowise](https://github.com/FlowiseAI/Flowise) ist seit dem 13. August 2026
+  archiviert. Das Repository verweist auf die weitere Entwicklung außerhalb
+  dieses Repos. Es kann als historische Referenz dienen, ist aber keine neue
+  Standardempfehlung.
+- [Continue](https://github.com/continuedev/continue) weist selbst darauf hin,
+  dass das Repository nicht mehr aktiv gepflegt wird. Für neue VS-Code- oder
+  JetBrains-Auswahl daher nur als archivierte Referenz führen.
+- [Semantic Kernel](https://github.com/microsoft/semantic-kernel) verweist im
+  README auf Microsoft Agent Framework als Nachfolger. Für neue Projekte
+  zuerst die [Migrationsdokumentation](https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-semantic-kernel)
+  prüfen.
+
 ## Workflow-Vorlagen (n8n / Make)
 
 Große, technische Sammlungen fertiger Workflows. Sinnvoll als

@@ -65,16 +65,18 @@ Repo automatisch antwortet.
 
 ## Wohin welche Frage führt
 
-| Frage bezieht sich auf …                                                  | Ordner                                       |
-| ------------------------------------------------------------------------- | -------------------------------------------- |
-| Grundbegriffe (Was ist ein LLM/RAG/Agent), Schulung von Mitarbeitenden    | [`grundlagen/`](grundlagen/)                 |
-| Ein konkretes Abteilungsproblem, Umsetzung, Kosten/Nutzen eines Falls     | [`anwendungsfaelle/`](anwendungsfaelle/)     |
-| Fertige Prompts zum Kopieren                                              | [`vorlagen/`](vorlagen/)                     |
-| Fertige n8n-/Make-Workflow-Dateien                                        | [`workflows/`](workflows/)                   |
-| Welches Werkzeug/welcher Anbieter für welchen Zweck, inkl. Serverstandort | [`werkzeuge/`](werkzeuge/)                   |
-| DSGVO, AVV, EU AI Act, Hochrisiko-Einstufung                              | [`recht/`](recht/)                           |
-| Kostenrechnung, ROI, Anbietervergleich-Kriterien                          | [`wirtschaftlichkeit/`](wirtschaftlichkeit/) |
-| Vergleichbare externe Projekte, größere Workflow-Sammlungen               | [`quellen/`](quellen/)                       |
+| Frage bezieht sich auf …                                                  | Ordner                                                 |
+| ------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Grundbegriffe (Was ist ein LLM/RAG/Agent), Schulung von Mitarbeitenden    | [`grundlagen/`](grundlagen/)                           |
+| Ein konkretes Abteilungsproblem, Umsetzung, Kosten/Nutzen eines Falls     | [`anwendungsfaelle/`](anwendungsfaelle/)               |
+| Fertige Prompts zum Kopieren                                              | [`vorlagen/`](vorlagen/)                               |
+| Fertige n8n-/Make-Workflow-Dateien                                        | [`workflows/`](workflows/)                             |
+| Welches Werkzeug/welcher Anbieter für welchen Zweck, inkl. Serverstandort | [`werkzeuge/`](werkzeuge/)                             |
+| DSGVO, AVV, EU AI Act, Hochrisiko-Einstufung                              | [`recht/`](recht/)                                     |
+| Technische Sicherheitskontrollen für LLM, RAG und Agenten                 | [`sicherheit/`](sicherheit/)                           |
+| Kostenrechnung, ROI, Anbietervergleich-Kriterien                          | [`wirtschaftlichkeit/`](wirtschaftlichkeit/)           |
+| Evaluation, Testsets, Messgrößen und Regressionen                         | [`grundlagen/evaluation.md`](grundlagen/evaluation.md) |
+| Vergleichbare externe Projekte, größere Workflow-Sammlungen               | [`quellen/`](quellen/)                                 |
 
 ## Wenn eine Information fehlt
 

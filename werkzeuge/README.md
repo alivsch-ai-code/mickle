@@ -25,6 +25,23 @@ Telemetrie, Backups und externe Webhooks müssen separat geprüft werden. Die
 [n8n-Dokumentation zu Datenschutz und Self-Hosting](https://github.com/n8n-io/n8n-docs/blob/main/docs/privacy-and-security/README.md)
 nennt eigene Lösch- und Aufbewahrungsprozesse für Self-Hosted-Betreiber.
 
+## Kurze Auswahlhilfe für Automatisierung
+
+| Situation                                                  | Erster Prüfpunkt                                      | Passende GitHub-Referenz                                                                                                                                          |
+| ---------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Feste Abläufe zwischen E-Mail, ERP und Dateiablage         | Workflow-Orchestrierung mit Freigabeschritt           | [n8n](https://github.com/n8n-io/n8n) oder Make; n8n ist selbst hostbar, Make nicht.                                                                               |
+| Visuelle LLM-App mit RAG und Agenten                       | Plattformumfang und Datenablage                       | [Dify](https://github.com/langgenius/dify) oder [Langflow](https://github.com/langflow-ai/langflow); beide sind nicht automatisch produktionssicher konfiguriert. |
+| Interne Chatoberfläche für lokale Modelle                  | Authentifizierung, Dokumentrechte und Offline-Betrieb | [Open WebUI](https://github.com/open-webui/open-webui) mit [Ollama](https://github.com/ollama/ollama).                                                            |
+| Viele Cloud- und lokale Modelle hinter einer Schnittstelle | Routing, Fallback, Kosten- und Schlüsselverwaltung    | [LiteLLM](https://github.com/BerriAI/litellm); ein Gateway wird zur zusätzlichen sicherheitskritischen Komponente.                                                |
+| Hoher Durchsatz auf eigener GPU-Infrastruktur              | Serving, Batching und Hardwarekompatibilität          | [vLLM](https://github.com/vllm-project/vllm); für einzelne Büro-PCs meist überdimensioniert.                                                                      |
+| Dokumentenlastige Wissenssuche                             | Parser, Chunking, Quellenbezug, Retrieval-Evaluation  | [RAGFlow](https://github.com/infiniflow/ragflow), [Haystack](https://github.com/deepset-ai/haystack) oder [LlamaIndex](https://github.com/run-llama/llama_index). |
+| Messbare Qualität statt Demo-Eindruck                      | Testdatensatz, Traces, Regressionen, Kosten           | [Opik](https://github.com/comet-ml/opik), Haystack-Evaluation oder [DSPy](https://github.com/stanfordnlp/dspy).                                                   |
+
+Die Tabelle ist eine Startauswahl. Vor einer Entscheidung müssen Lizenz,
+Version, Sicherheitsmeldungen, Authentifizierung, Datenflüsse, Backup,
+Löschung, Betriebskosten und ein Test mit anonymisierten Beispieldaten geprüft
+werden.
+
 ## LLM-Anbieter (Cloud-APIs)
 
 | Anbieter                       | Beispielmodelle                       | Serverstandort                            | Hinweis                                                                  |
@@ -37,21 +54,32 @@ nennt eigene Lösch- und Aufbewahrungsprozesse für Self-Hosted-Betreiber.
 Preise pro Token/Anfrage: `[PRÜFEN]` — abhängig von Modell und
 Vertragsform, ändert sich regelmäßig.
 
-## Lokale/offene Modelle (Daten verlassen das Haus nicht)
+## Lokale, EU-gehostete und Cloud-Modelle getrennt bewerten
 
-| Werkzeug                                                                     | Zweck                                              |
-| ---------------------------------------------------------------------------- | -------------------------------------------------- |
-| Ollama                                                                       | Betrieb offener Sprachmodelle auf eigener Hardware |
-| Offene Modelle (z. B. Llama-, Mistral-, Qwen-Reihe, jeweils offene Gewichte) | Basis für Ollama oder eigene Infrastruktur         |
+| Werkzeug                                                                     | Zweck                                                                         |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Ollama                                                                       | Betrieb offener Sprachmodelle auf eigener Hardware oder eigener Infrastruktur |
+| Offene Modelle (z. B. Llama-, Mistral-, Qwen-Reihe, jeweils offene Gewichte) | Basis für Ollama oder eigene Infrastruktur                                    |
 
-Voraussetzung: ausreichend Rechenleistung (GPU) im Haus oder bei einem
-Hosting-Anbieter mit Sitz in der EU. Eine pauschale Qualitätsaussage ist nicht
+Eine lokale Ausführung auf eigener Hardware, EU-Hosting und Cloud-Betrieb sind
+unterschiedliche Datenschutz- und Betriebsmodelle. EU-Hosting bedeutet nicht,
+dass Daten das Unternehmen nicht verlassen. Auch bei lokaler Ausführung müssen
+Backups, Telemetrie, Administrationszugänge, Plugins und externe APIs geprüft
+werden.
+
+Voraussetzung für eigene Hardware ist ausreichend Rechenleistung, meist GPU,
+oder ein passend dimensionierter Server. Eine pauschale Qualitätsaussage ist nicht
 belastbar: Ergebnisqualität hängt von Modell, Quantisierung, Hardware,
 Kontextlänge und Aufgabe ab. Vor einer Entscheidung mit anonymisierten,
 repräsentativen Beispielen testen und dieselben Testfälle gegen die geplante
 Cloud-Alternative laufen lassen. Für RAG-Anwendungen zusätzlich Retrieval und
 Quellenbezug messen, siehe [LlamaIndex](https://github.com/run-llama/llama_index/blob/main/docs/src/content/docs/framework/optimizing/building_rag_from_scratch.md)
 und [Haystack](https://github.com/deepset-ai/haystack/blob/main/docs-website/docs/optimization/evaluation/statistical-evaluation.mdx).
+
+Für kleine lokale Installationen ist Ollama ein einfacher Einstieg. Für
+leistungsfähiges Serving mit vielen parallelen Anfragen sind [vLLM](https://github.com/vllm-project/vllm)
+oder [llama.cpp](https://github.com/ggml-org/llama.cpp) technische Alternativen.
+Sie lösen keine Modelllizenz-, Zugriffs- oder Datenschutzprüfung.
 
 ## Texterkennung und Dokumentenverarbeitung (OCR)
 
@@ -85,3 +113,19 @@ Ein Werkzeug in dieser Tabelle ist keine Empfehlung ohne Prüfung. Es ist
 der Ausgangspunkt für den jeweiligen Anwendungsfall. Details zu Kosten und
 Datenschutz stehen im jeweiligen Anwendungsfall unter Punkt 4 und 7, nicht
 hier.
+
+## Mindestkriterien vor dem Pilotbetrieb
+
+- **Datenfluss:** Eingaben, Ausgaben, Logs, Embeddings, Backups und Telemetrie
+  aufzeichnen.
+- **Zugriff:** Rollen, Mandanten, Tool-Allowlist, Secrets und Netzwerkzugriffe
+  testen.
+- **Qualität:** 20 bis 50 repräsentative, anonymisierte Testfälle mit
+  erwarteter Antwort oder erwarteten Feldern definieren.
+- **Fehlerverhalten:** Unsicherheit, fehlende Quellen, Timeout, Anbieterfehler
+  und widersprüchliche Dokumente testen.
+- **Freigabe:** Aktionen mit Außenwirkung zunächst als Entwurf behandeln;
+  Versand, Zahlung, Auftrag und Personalentscheidung benötigen eine benannte
+  menschliche Freigabe.
+- **Betrieb:** Update-, Backup-, Wiederherstellungs-, Lösch- und
+  Abschaltprozess dokumentieren.
