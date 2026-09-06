@@ -23,6 +23,11 @@ Kosten je Vorgang = (Eingabe-Tokens × Preis je Eingabe-Token)
 - Bei Automatisierungsplattformen (n8n Cloud, Make) kommen ggf.
   Ausführungs- oder Vorgangskosten der Plattform selbst hinzu — getrennt
   von den Modellkosten ausweisen.
+- **Ohne KI-Komponente entfällt diese Formel.** Bei klassischer
+  Automatisierung (z. B. Ansible, Terraform, Jenkins, ROS) gibt es keine
+  Token-Kosten — hier zählen nur Lizenz-/Hosting-Kosten (siehe
+  Steckbrief in [`werkzeuge/README.md`](../werkzeuge/README.md)) und
+  Einrichtung (Abschnitt 2 unten).
 
 ## 2. Einrichtungsaufwand
 

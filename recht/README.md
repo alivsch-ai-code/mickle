@@ -10,6 +10,16 @@ Angabe noch aktuell ist.
 Ergänzende, tiefergehende Vorlagen Dritter zu diesem Thema: siehe
 [`quellen/README.md`](../quellen/README.md#eu-ai-act-und-compliance).
 
+**Geltungsbereich:** Dieser Ordner behandelt Rechtsfragen zu KI-Systemen
+(DSGVO bei KI-gestützter Verarbeitung, EU AI Act). Für die klassischen
+Automatisierungswerkzeuge in [`werkzeuge/`](../werkzeuge/) (z. B. Ansible,
+Terraform, Jenkins, ROS, ArduPilot) gilt der EU AI Act nicht — dort ist
+keine KI-Komponente vorhanden. DSGVO-Fragen (Auftragsverarbeitung,
+Serverstandort) können trotzdem relevant sein, sobald ein solches Werkzeug
+personenbezogene Daten verarbeitet (z. B. Patientendaten in
+OpenMRS/HAPI-FHIR, Kundendaten in Saleor/Magento) — das ist im Einzelfall
+zu prüfen, unabhängig von KI.
+
 ## 1. DSGVO — die praktisch relevanten Fragen
 
 Bei jedem Anwendungsfall in [`anwendungsfaelle/`](../anwendungsfaelle/)

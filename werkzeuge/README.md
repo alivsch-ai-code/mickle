@@ -1,11 +1,13 @@
 # Werkzeuge und Anbieter
 
 Übersicht der Werkzeuge, auf die sich die Anwendungsfälle in diesem Repo
-stützen. Keine vollständige Marktübersicht, sondern die Auswahl, die für
-Betriebe mit 10 bis 500 Mitarbeitern ohne eigenes IT-Team praktikabel ist.
-Preise ändern sich häufig — wo nicht sicher, steht `[PRÜFEN]` statt einer
-geschätzten Zahl. Prüfen Sie Preise vor einer Entscheidung immer direkt
-beim Anbieter.
+stützen, sowie ein Katalog klassischer Automatisierungswerkzeuge über
+weitere Branchen (Abschnitt
+["Klassische Automatisierung nach Branche"](#klassische-automatisierung-nach-branche-kein-ki-bezug)
+unten). Keine vollständige Marktübersicht, sondern eine Auswahl, die für
+Betriebe ohne eigenes IT-Team praktikabel ist. Preise ändern sich häufig —
+wo nicht sicher, steht `[PRÜFEN]` statt einer geschätzten Zahl. Prüfen Sie
+Preise vor einer Entscheidung immer direkt beim Anbieter.
 
 Zu jedem Werkzeug: Serverstandort/Anbietersitz (relevant für DSGVO, siehe
 [`recht/`](../recht/)) und ob eine lokale Alternative existiert.
@@ -107,12 +109,81 @@ Diese Systeme werden in den Anwendungsfällen als Ziel für automatisiert
 erfasste Belege genannt, nicht als von diesem Repo bereitgestelltes
 Werkzeug.
 
+## Klassische Automatisierung nach Branche (kein KI-Bezug)
+
+Diese Werkzeuge haben keine KI-Komponente — die EU-AI-Act-Hinweise in
+[`recht/`](../recht/) gelten hier nicht (siehe
+[`recht/README.md`](../recht/README.md), Abschnitt „Geltungsbereich“).
+Es sind reine Werkzeug-Steckbriefe (Lizenz, Hosting, ein Hinweis), keine
+ausgearbeiteten Anwendungsfälle — Kosten-, Nutzen- und Datenschutzprüfung
+für den jeweiligen Betrieb stehen noch aus (siehe
+[`AGENTS.md`](../AGENTS.md#nicht-ziele)). Stand der Recherche: 2026-09-06.
+
+### IT/DevOps
+
+| Werkzeug | Lizenz | Selbst hostbar | Hinweis |
+| --- | --- | --- | --- |
+| [Ansible](https://github.com/ansible/ansible) | GPL-3.0 | Ja, agentenlos per SSH | Konfigurationsmanagement und Provisionierung. Red Hats kostenpflichtige „Ansible Automation Platform“ ergänzt Clustering/Analytics, der Kern bleibt frei. |
+| [Terraform](https://github.com/hashicorp/terraform) | Business Source License 1.1 seit August 2023 — **kein OSI-Open-Source mehr** | Eingeschränkt (BSL verbietet konkurrierende kommerzielle Nutzung) | Infrastructure as Code für Cloud-Ressourcen. Lokale/offene Alternative: [OpenTofu](https://github.com/opentofu/opentofu) — Apache-2.0-Fork unter der Linux Foundation, entstanden genau wegen dieser Lizenzänderung. |
+| [Jenkins](https://github.com/jenkinsci/jenkins) | MIT | Ja | CI/CD-Automatisierungsserver, community-geführt. CloudBees bietet eine kommerzielle Managed-Variante separat an. |
+
+### Fertigung/Industrie
+
+| Werkzeug | Lizenz | Selbst hostbar | Hinweis |
+| --- | --- | --- | --- |
+| [OpenPLC](https://github.com/Autonomy-Logic/openplc-runtime) | MIT (aktuelle v4-Linie; ältere v3 war GPL-3.0) | Ja — Linux, Raspberry Pi, Windows, Docker | Offene Soft-SPS (IEC 61131-3). Das Projekt wechselte von der alten v3-Codebasis zu einer neuen Organisation (Autonomy-Logic) und MIT-Lizenz — genaues Umstellungsdatum `[PRÜFEN]`, vor Einsatz aktuellen Repo-Stand prüfen. |
+| [Node-RED](https://github.com/node-red/node-red) | Apache 2.0 | Ja — läuft auf Node.js, z. B. Raspberry Pi | Low-Code-Automatisierung für IoT und ereignisgetriebene Abläufe, unter der OpenJS Foundation. |
+
+### Finanzen/Handel
+
+| Werkzeug | Lizenz | Selbst hostbar | Hinweis |
+| --- | --- | --- | --- |
+| [ccxt](https://github.com/ccxt/ccxt) | MIT | Ja — Bibliothek, läuft in eigener Infrastruktur | Einheitliche API-Anbindung an über 100 Kryptobörsen für eigenen Handelscode. |
+| [QuantConnect Lean](https://github.com/QuantConnect/Lean) (Engine) | Apache 2.0 | Ja — lokale Installation, Backtesting und Live-Handel ohne Cloud-Pflicht laut Projekt-Dokumentation | Algorithmische Handels-Engine. Von der kommerziellen QuantConnect-Cloud-Plattform (baut auf derselben Engine auf) zu unterscheiden. |
+
+### Gesundheitswesen
+
+| Werkzeug | Lizenz | Selbst hostbar | Hinweis |
+| --- | --- | --- | --- |
+| [HAPI FHIR](https://github.com/hapifhir/hapi-fhir) | Apache 2.0 | Ja | Java-Implementierung des HL7-FHIR-Standards für Client-/Server-Interoperabilität im Gesundheitswesen. Kommerziellen Support bietet Smile Digital Health, ohne den Kern umzulizenzieren. |
+| [OpenMRS](https://github.com/openmrs/openmrs-core) | MPL 2.0 mit Healthcare-Disclaimer | Ja — Jetty, Cargo, Docker | Patientenbasiertes elektronisches Patientenaktensystem für ressourcenarme Gesundheitseinrichtungen. Verarbeitet Patientendaten — DSGVO-/AVV-Prüfung ist hier nicht optional (siehe [`recht/README.md`](../recht/README.md)). |
+
+### Handel/E-Commerce
+
+| Werkzeug | Lizenz | Selbst hostbar | Hinweis |
+| --- | --- | --- | --- |
+| [Saleor](https://github.com/saleor/saleor) | BSD-3-Clause | Ja | Headless, GraphQL-basierte E-Commerce-Plattform. Saleor Cloud ist ein separates kostenpflichtiges Hosting-Angebot, der Code selbst bleibt offen. |
+| [Magento 2 / Magento Open Source](https://github.com/magento/magento2) | Open Software License 3.0 | Ja | Offene E-Commerce-Plattform. Adobe Commerce ist die kostenpflichtige Erweiterung (B2B-Funktionen, KI-Merchandising, optional gemanagtes Cloud-Hosting) auf demselben Kern — Preise `[PRÜFEN]` direkt bei Adobe. |
+
+### Smart Home / Gebäudeautomation
+
+| Werkzeug | Lizenz | Selbst hostbar | Hinweis |
+| --- | --- | --- | --- |
+| [Home Assistant](https://github.com/home-assistant/core) | Apache 2.0 | Ja — Kernprinzip lokaler Betrieb, z. B. Raspberry Pi | Herstellerübergreifende Smart-Home-Zentrale. Nabu Casa bietet einen optionalen kostenpflichtigen Cloud-Zusatz (Fernzugriff, Sprachassistenten); Kernfunktion bleibt lokal und kostenlos. |
+| [openHAB](https://github.com/openhab/openhab-core) | Eclipse Public License 2.0 `[PRÜFEN — Angabe aus Sekundärquellen, vor Verwendung direkt am Repository gegenprüfen]` | Ja — Kernprinzip lokaler Betrieb | Herstellerneutrale Automatisierungsplattform für Gebäude/Smart Home, unter der openHAB Foundation. |
+
+### Robotik
+
+| Werkzeug | Lizenz | Selbst hostbar | Hinweis |
+| --- | --- | --- | --- |
+| [ROS 2](https://github.com/ros2/ros2) | Kein einheitliches Lizenzmodell — Kernbibliotheken überwiegend Apache 2.0, einzelne Pakete abweichend (u. a. BSD, LGPL); je Paket prüfen | Ja — läuft auf eigener Roboter-/Recheneinheit, keine Cloud-Pflicht | Middleware und Werkzeuge für Roboterentwicklung. ROS 1 (letzte Distribution „Noetic“) erreichte am 31. Mai 2025 das End of Life — für neue Vorhaben ROS 2 verwenden. |
+| [ArduPilot](https://github.com/ArduPilot/ardupilot) | GPL-3.0 | Ja — läuft auf eigener Flugsteuerungshardware | Autopilot-Software für Drohnen, Fahrzeuge, Boote und Unterwasserfahrzeuge (ArduPlane, ArduCopter, ArduRover, ArduSub). |
+
+### Marketing/Social Media
+
+| Werkzeug | Lizenz | Selbst hostbar | Hinweis |
+| --- | --- | --- | --- |
+| [Rasa](https://github.com/RasaHQ/rasa) | Apache 2.0 | Ja | Framework für Conversational AI (NLU, Dialogmanagement). Laut offiziellem Repository befindet sich „Rasa Open Source“ **im Wartungsmodus** — die Weiterentwicklung konzentriert sich auf die kostenpflichtige „Rasa Platform“ und „Hello Rasa“. Vor einer Entscheidung aktuellen Stand direkt im Repository prüfen. |
+| [InstaPy](https://github.com/InstaPy/InstaPy) | GPL-3.0 | Technisch ja, **nicht empfohlen** | Automatisiert Instagram-Interaktionen per Browser-Steuerung. Letzter inhaltlicher Commit Dezember 2022, über 500 offene Issues; das Projekt warnt selbst vor Konto-Sperrungen durch Instagram. Hohes Risiko für Konto- und Reputationsschäden — für einen Betrieb nicht geeignet. |
+
 ## Wie diese Liste zu lesen ist
 
-Ein Werkzeug in dieser Tabelle ist keine Empfehlung ohne Prüfung. Es ist
-der Ausgangspunkt für den jeweiligen Anwendungsfall. Details zu Kosten und
-Datenschutz stehen im jeweiligen Anwendungsfall unter Punkt 4 und 7, nicht
-hier.
+Ein Werkzeug in dieser Tabelle ist keine Empfehlung ohne Prüfung. Für die
+KI-Werkzeuge oben ist es der Ausgangspunkt für den jeweiligen
+Anwendungsfall — Details zu Kosten und Datenschutz stehen dort unter
+Punkt 4 und 7, nicht hier. Für die klassischen Automatisierungswerkzeuge
+nach Branche gibt es noch keinen Anwendungsfall dazu; Kosten- und
+Datenschutzprüfung sind dort vollständig Aufgabe des jeweiligen Betriebs.
 
 ## Mindestkriterien vor dem Pilotbetrieb
 

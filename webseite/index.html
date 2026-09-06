@@ -1,0 +1,964 @@
+<title>KI-Handbuch Mittelstand</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#eef0f1;
+    --surface:#ffffff;
+    --surface-2:#e2e6e8;
+    --ink:#1a2126;
+    --ink-soft:#51606a;
+    --ink-faint:#7c8a92;
+    --line:#c7ced2;
+    --line-strong:#9aa5ab;
+    --accent:#0f5fa0;
+    --accent-ink:#0a3f6b;
+    --accent-soft:#dcebf7;
+    --flag:#a56a15;
+    --flag-soft:#f3e3c4;
+    --shadow: 0 1px 0 rgba(20,30,36,.04);
+    --radius: 3px;
+    --font-display:'Titillium Web', 'Arial Narrow', sans-serif;
+    --font-body:'IBM Plex Sans', 'Segoe UI', sans-serif;
+    --font-mono:'IBM Plex Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12181c;
+      --surface:#1a2126;
+      --surface-2:#212a30;
+      --ink:#e7ecee;
+      --ink-soft:#a3b2ba;
+      --ink-faint:#71828a;
+      --line:#334047;
+      --line-strong:#4a5a62;
+      --accent:#6fb1e8;
+      --accent-ink:#bfe0f9;
+      --accent-soft:#1c3348;
+      --flag:#e3a83b;
+      --flag-soft:#3a2e14;
+      --shadow: 0 1px 0 rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12181c;
+    --surface:#1a2126;
+    --surface-2:#212a30;
+    --ink:#e7ecee;
+    --ink-soft:#a3b2ba;
+    --ink-faint:#71828a;
+    --line:#334047;
+    --line-strong:#4a5a62;
+    --accent:#6fb1e8;
+    --accent-ink:#bfe0f9;
+    --accent-soft:#1c3348;
+    --flag:#e3a83b;
+    --flag-soft:#3a2e14;
+    --shadow: 0 1px 0 rgba(0,0,0,.3);
+  }
+
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:700;
+    text-wrap:balance;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  p{margin:0 0 1em;}
+  a{color:var(--accent-ink);}
+  code, .mono{font-family:var(--font-mono);}
+  .wrap{max-width:78rem; margin:0 auto; padding:0 1.5rem;}
+  .prose{max-width:44rem;}
+
+  .eyebrow{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 .6rem;
+  }
+
+  /* ---------- Title block ---------- */
+  .titleblock{
+    border-bottom:2px solid var(--ink);
+    background:var(--surface);
+    position:relative;
+  }
+  .corner{
+    position:absolute; width:14px; height:14px;
+    border-color:var(--line-strong); pointer-events:none;
+  }
+  .corner.tl{top:8px; left:8px; border-top:1.5px solid var(--line-strong); border-left:1.5px solid var(--line-strong);}
+  .corner.tr{top:8px; right:8px; border-top:1.5px solid var(--line-strong); border-right:1.5px solid var(--line-strong);}
+  .tb-head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+    padding:2.4rem 0 1.4rem;
+    flex-wrap:wrap;
+  }
+  .tb-head h1{font-size:clamp(1.7rem, 3.2vw, 2.4rem); letter-spacing:-.01em;}
+  .tb-head .sub{color:var(--ink-soft); font-size:1rem; max-width:34rem;}
+  .tb-grid{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    border-top:1px solid var(--line);
+  }
+  .tb-cell{
+    border-right:1px solid var(--line);
+    padding:.65rem .9rem;
+  }
+  .tb-cell:last-child{border-right:none;}
+  .tb-label{
+    font-family:var(--font-display); font-weight:700; font-size:.62rem;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+    margin-bottom:.25rem;
+  }
+  .tb-value{font-family:var(--font-mono); font-size:.85rem; color:var(--ink); font-variant-numeric:tabular-nums;}
+  @media (max-width:820px){
+    .tb-grid{grid-template-columns:repeat(2, 1fr);}
+    .tb-cell:nth-child(2n){border-right:none;}
+    .tb-cell{border-bottom:1px solid var(--line);}
+  }
+
+  /* ---------- Folder tabs nav ---------- */
+  .tabs-outer{
+    position:sticky; top:0; z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--line-strong);
+  }
+  .tabs{
+    display:flex; gap:.3rem;
+    overflow-x:auto;
+    padding:.6rem 1.5rem 0;
+    max-width:78rem; margin:0 auto;
+    scrollbar-width:thin;
+  }
+  .tabs a{
+    flex:none;
+    font-family:var(--font-display); font-weight:600; font-size:.82rem;
+    letter-spacing:.02em;
+    text-decoration:none; color:var(--ink-soft);
+    background:var(--surface-2);
+    border:1px solid var(--line-strong); border-bottom:none;
+    border-radius:4px 4px 0 0;
+    padding:.5rem 1rem .55rem;
+    white-space:nowrap;
+    transition:color .15s, background .15s;
+  }
+  .tabs a:hover{color:var(--ink); background:var(--surface);}
+  .tabs a:focus-visible{outline:2px solid var(--accent); outline-offset:-2px;}
+
+  section{padding:3.2rem 0;}
+  section + section{border-top:1px solid var(--line);}
+  .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.6rem;}
+  .section-head h2{font-size:1.5rem;}
+  .stand{font-family:var(--font-mono); font-size:.78rem; color:var(--ink-faint);}
+
+  /* ---------- Stats ---------- */
+  .stat-row{display:grid; grid-template-columns:repeat(auto-fit, minmax(15rem,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .stat{background:var(--surface); padding:1.4rem 1.5rem;}
+  .stat .num{font-family:var(--font-mono); font-size:2.6rem; font-weight:600; font-variant-numeric:tabular-nums; color:var(--accent-ink); line-height:1;}
+  .stat .lbl{margin-top:.5rem; font-size:.92rem; color:var(--ink-soft);}
+  .stat .src{margin-top:.6rem; font-size:.76rem; color:var(--ink-faint);}
+  .stat .src a{color:var(--ink-faint);}
+  .caveat{margin-top:1rem; font-size:.85rem; color:var(--ink-soft); border-left:2px solid var(--flag); padding-left:.8rem;}
+
+  /* ---------- Assistant shell ---------- */
+  .assistant{
+    background:var(--surface);
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius);
+  }
+  .assistant-head{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.8rem;
+    padding:1rem 1.2rem;
+    border-bottom:1px solid var(--line);
+    background:var(--surface-2);
+  }
+  .assistant-title{display:flex; align-items:center; gap:.6rem; font-family:var(--font-display); font-weight:700;}
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); flex:none;}
+  .modes{display:flex; gap:.4rem;}
+  .mode-btn{
+    font-family:var(--font-display); font-weight:600; font-size:.78rem;
+    border:1px solid var(--line-strong); background:var(--surface);
+    color:var(--ink-soft); padding:.4rem .8rem; border-radius:3px; cursor:pointer;
+  }
+  .mode-btn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .assistant-body{padding:1.2rem;}
+  @keyframes rise{ from{opacity:0; transform:translateY(3px);} to{opacity:1; transform:none;} }
+  .chips{display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:1rem;}
+  .chip{
+    font-size:.82rem; font-family:var(--font-body);
+    border:1px solid var(--line-strong); background:var(--surface);
+    color:var(--ink-soft); padding:.4rem .7rem; border-radius:20px; cursor:pointer;
+  }
+  .chip:hover{border-color:var(--accent); color:var(--accent-ink);}
+  .chip:disabled, .qoption:disabled, .pill-send:disabled{opacity:.4; cursor:default;}
+  button:focus-visible, .chip:focus-visible, textarea:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
+  .btn{
+    font-family:var(--font-display); font-weight:700; font-size:.85rem;
+    background:var(--accent); color:#fff; border:1px solid var(--accent);
+    padding:.6rem 1.1rem; border-radius:3px; cursor:pointer; white-space:nowrap;
+  }
+  .btn:disabled{opacity:.5; cursor:default;}
+  .btn.ghost{background:transparent; color:var(--ink-soft); border-color:var(--line-strong); font-weight:600;}
+  .assistant-foot{display:flex; justify-content:space-between; align-items:center; margin-top:1rem; gap:1rem; flex-wrap:wrap;}
+  .foot-note{font-size:.76rem; color:var(--ink-faint);}
+
+  /* ---------- Fragebogen ---------- */
+  .qbar{height:4px; background:var(--surface-2); border-radius:2px; overflow:hidden; margin-bottom:.8rem;}
+  .qbar-fill{height:100%; background:var(--accent); transition:width .25s ease;}
+  .qmeta{display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:.72rem; color:var(--ink-faint); margin-bottom:1rem;}
+  .qcard h3{font-size:1.12rem; margin-bottom:1rem;}
+  .qoptions{display:flex; flex-direction:column; gap:.55rem; margin-bottom:1.1rem;}
+  .qoption{
+    text-align:left; font-family:var(--font-body); font-size:.92rem; color:var(--ink);
+    background:var(--surface); border:1px solid var(--line-strong); border-radius:6px;
+    padding:.7rem .9rem; cursor:pointer; display:flex; align-items:flex-start; gap:.7rem;
+    width:100%;
+  }
+  .qoption:hover{border-color:var(--accent); background:var(--accent-soft);}
+  .qoption .k{font-family:var(--font-mono); color:var(--ink-faint); font-size:.78rem; flex:none; padding-top:.1rem;}
+  .qnav{display:flex; justify-content:space-between; align-items:center;}
+  .qback{font-family:var(--font-display); font-weight:600; font-size:.8rem; color:var(--ink-soft); background:none; border:none; cursor:pointer; padding:.3rem 0;}
+  .qback:disabled{visibility:hidden;}
+  .result-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:1.1rem;}
+  .result-tile{background:var(--surface); padding:1rem 1.1rem;}
+  .result-tile .rt-label{font-family:var(--font-display); font-weight:700; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:.4rem;}
+  .result-tile .rt-value{font-size:.9rem; color:var(--ink); line-height:1.45;}
+  .result-actions{display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:.2rem;}
+  .ai-summary{border-left:2px solid var(--accent); padding-left:.9rem; font-size:.92rem; color:var(--ink-soft); white-space:pre-wrap; line-height:1.55; margin-top:1rem;}
+
+  /* ---------- Chat (ChatGPT-artig) ---------- */
+  .chat-transcript{
+    display:flex; flex-direction:column; gap:1.2rem;
+    min-height:11rem; max-height:28rem; overflow-y:auto;
+    padding:.1rem .2rem 1rem; margin-bottom:.9rem;
+  }
+  .msg{display:flex; gap:.7rem; animation:rise .18s ease-out;}
+  .msg.user{flex-direction:row-reverse;}
+  .msg.system, .msg.error{justify-content:center;}
+  .avatar{
+    flex:none; width:1.85rem; height:1.85rem; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-size:.64rem; font-weight:600;
+  }
+  .msg.assistant .avatar{background:var(--accent); color:#fff;}
+  .msg.user .avatar{background:transparent; border:1px solid var(--line-strong); color:var(--ink-soft);}
+  .msg-text{font-size:.94rem; line-height:1.55; white-space:pre-wrap; padding-top:.2rem; max-width:32rem;}
+  .msg.user .msg-text{
+    background:var(--flag-soft); border:1px solid var(--line); color:var(--ink);
+    padding:.55rem .85rem; border-radius:14px 14px 3px 14px; padding-top:.55rem;
+  }
+  .msg.system .msg-text, .msg.error .msg-text{font-size:.84rem; text-align:center; max-width:28rem; padding-top:0;}
+  .msg.system .msg-text{color:var(--ink-faint); font-style:italic;}
+  .msg.error .msg-text{color:var(--flag);}
+  .typing{display:inline-flex; gap:3px; padding:.35rem 0;}
+  .typing span{width:5px; height:5px; border-radius:50%; background:currentColor; opacity:.55; animation:bounce 1s infinite ease-in-out;}
+  .typing span:nth-child(2){animation-delay:.15s;}
+  .typing span:nth-child(3){animation-delay:.3s;}
+  @keyframes bounce{0%,80%,100%{transform:translateY(0);} 40%{transform:translateY(-3px);}}
+  .pill-form{display:flex; align-items:flex-end; gap:.5rem; background:var(--bg); border:1px solid var(--line-strong); border-radius:22px; padding:.4rem .45rem .4rem 1.1rem;}
+  .pill-form textarea{
+    flex:1; resize:none; border:none; background:transparent; font-family:var(--font-body); font-size:.94rem; color:var(--ink);
+    min-height:1.5rem; max-height:8rem; padding:.4rem 0;
+  }
+  .pill-form textarea:focus-visible{outline:none;}
+  .pill-send{
+    flex:none; width:2.05rem; height:2.05rem; border-radius:50%; border:none;
+    background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .pill-send svg{width:.95rem; height:.95rem;}
+
+  /* ---------- Modules ---------- */
+  .modules{display:grid; grid-template-columns:repeat(auto-fill, minmax(16rem,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .module{background:var(--surface); padding:1.3rem 1.4rem; display:flex; gap:.9rem;}
+  .module .n{font-family:var(--font-mono); font-size:1.3rem; color:var(--ink-faint); flex:none; width:1.6rem;}
+  .module h3{font-size:1rem; margin-bottom:.35rem;}
+  .module p{font-size:.86rem; color:var(--ink-soft); margin:0;}
+  .module.appendix{background:var(--surface-2);}
+
+  /* ---------- Tables ---------- */
+  .table-scroll{overflow-x:auto; border:1px solid var(--line);}
+  table{width:100%; border-collapse:collapse; font-size:.88rem; min-width:38rem;}
+  thead th{
+    text-align:left; font-family:var(--font-display); font-weight:700; font-size:.72rem;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);
+    background:var(--surface-2); padding:.6rem .8rem; border-bottom:1px solid var(--line-strong);
+  }
+  tbody td{padding:.6rem .8rem; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-soft);}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody td:first-child{font-family:var(--font-mono); color:var(--ink-faint);}
+  .pill{
+    display:inline-block; font-size:.72rem; font-family:var(--font-mono);
+    border:1px solid var(--line-strong); color:var(--ink-soft);
+    padding:.1rem .5rem; border-radius:20px; white-space:nowrap;
+  }
+
+  /* ---------- Tool cards ---------- */
+  .tool-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(17rem,1fr)); gap:1rem;}
+  .tool-card{border:1px solid var(--line); border-radius:var(--radius); padding:1.1rem 1.2rem; background:var(--surface);}
+  .tool-card .situation{font-size:.78rem; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; font-family:var(--font-display); font-weight:700; margin-bottom:.4rem;}
+  .tool-card p{font-size:.88rem; margin:0; color:var(--ink-soft);}
+  .tool-card b{color:var(--ink);}
+
+  /* ---------- Legal/Sec/Econ tiles ---------- */
+  .tile-row{display:grid; grid-template-columns:repeat(auto-fit, minmax(16rem,1fr)); gap:1rem;}
+  .tile{border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:var(--radius); padding:1.2rem 1.3rem; background:var(--surface);}
+  .tile h3{font-size:1.02rem;}
+  .tile ul{margin:0; padding-left:1.1rem; font-size:.86rem; color:var(--ink-soft);}
+  .tile li{margin-bottom:.4rem;}
+  .tile .tag{display:inline-block; font-size:.7rem; font-family:var(--font-mono); color:var(--flag); background:var(--flag-soft); padding:.1rem .5rem; border-radius:3px; margin-bottom:.7rem;}
+
+  /* ---------- Sources ---------- */
+  .src-groups{display:grid; grid-template-columns:repeat(auto-fit, minmax(15rem,1fr)); gap:1.6rem;}
+  .src-group h3{font-size:.85rem; letter-spacing:.03em; color:var(--ink-faint); text-transform:uppercase; font-family:var(--font-display); margin-bottom:.7rem;}
+  .src-list{display:flex; flex-wrap:wrap; gap:.4rem;}
+  .src-list a{
+    font-size:.8rem; font-family:var(--font-mono); text-decoration:none;
+    border:1px solid var(--line); padding:.25rem .55rem; border-radius:3px; color:var(--ink-soft);
+    background:var(--surface);
+  }
+  .src-list a:hover{border-color:var(--accent); color:var(--accent-ink);}
+  .studies{margin-top:1.4rem; display:flex; flex-direction:column; gap:.8rem;}
+  .study{font-size:.86rem; color:var(--ink-soft); border-left:2px solid var(--line-strong); padding-left:.9rem;}
+  .study a{color:var(--ink-soft);}
+
+  footer{padding:2.4rem 0 3.5rem; border-top:1px solid var(--line);}
+  footer p{font-size:.82rem; color:var(--ink-faint); margin:0 0 .5rem;}
+</style>
+
+<div class="titleblock">
+  <div class="wrap">
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="tb-head">
+      <div>
+        <div class="eyebrow">Nachschlagewerk &amp; KI-Auskunft</div>
+        <h1>KI-Automatisierung für den Mittelstand</h1>
+        <p class="sub">Sofort einsetzbare Orientierung für Betriebe ohne Data-Science-Team — mit Schulung, Anwendungsfall-Backlog, Recht, Werkzeugen und einer KI-Auskunft, die auf genau diesen Inhalten antwortet.</p>
+      </div>
+    </div>
+    <div class="tb-grid">
+      <div class="tb-cell"><div class="tb-label">Zielgruppe</div><div class="tb-value">KMU 10–500 MA</div></div>
+      <div class="tb-cell"><div class="tb-label">Referenzbetrieb</div><div class="tb-value">Muster Metallbau GmbH (fiktiv)</div></div>
+      <div class="tb-cell"><div class="tb-label">Stand</div><div class="tb-value">2026-09-06</div></div>
+      <div class="tb-cell"><div class="tb-label">Lizenz</div><div class="tb-value">Code MIT · Text CC BY 4.0</div></div>
+      <div class="tb-cell"><div class="tb-label">Blatt</div><div class="tb-value">1 / 1</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs-outer">
+  <nav class="tabs" aria-label="Abschnitte">
+    <a href="#assistent">Auskunft</a>
+    <a href="#ausgangslage">Ausgangslage</a>
+    <a href="#schulung">Schulung</a>
+    <a href="#anwendungsfaelle">Anwendungsfälle</a>
+    <a href="#werkzeuge">Werkzeuge</a>
+    <a href="#rahmen">Recht &amp; Sicherheit</a>
+    <a href="#wirtschaftlichkeit">Wirtschaftlichkeit</a>
+    <a href="#quellen">Quellen</a>
+  </nav>
+</div>
+
+<main class="wrap">
+
+  <section id="assistent">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Interaktiv</div>
+        <h2>Auskunft aus dem Handbuch</h2>
+      </div>
+      <div class="stand mono">antwortet nur auf Basis der Inhalte dieser Seite</div>
+    </div>
+
+    <div class="assistant">
+      <div class="assistant-head">
+        <div class="assistant-title"><span class="dot" id="statusDot"></span> KI-Auskunft</div>
+        <div class="modes">
+          <button class="mode-btn" id="btnModeFragebogen" aria-pressed="true">Fragebogen</button>
+          <button class="mode-btn" id="btnModeChat" aria-pressed="false">Chat</button>
+        </div>
+      </div>
+      <div class="assistant-body">
+
+        <div id="panelFragebogen">
+          <div id="fbStage"><!-- von renderFragebogen() gefüllt --></div>
+        </div>
+
+        <div id="panelChat" hidden>
+          <div class="chat-transcript" id="transcriptChat">
+            <div class="msg system"><div class="msg-text">Ich beantworte Fragen zu diesem Handbuch: Schulung, Anwendungsfälle, Recht, Werkzeuge, Kosten. Ich erfinde keine Preise oder Rechtsauskünfte — was nicht in diesem Repo steht, sage ich offen.</div></div>
+          </div>
+          <div class="chips" id="chipsChat">
+            <button class="chip" type="button">Ab wann gilt die Kennzeichnungspflicht für einen Kunden-Chatbot?</button>
+            <button class="chip" type="button">Wie rechne ich die Kosten eines KI-Vorgangs?</button>
+            <button class="chip" type="button">Dürfen wir Bewerbungen automatisiert bewerten lassen?</button>
+            <button class="chip" type="button">Welches Werkzeug passt für lokale, offene Wissenssuche?</button>
+            <button class="chip" type="button">Was unterscheidet Prompting von Fine-Tuning?</button>
+          </div>
+          <form class="pill-form" id="formChat">
+            <textarea id="inputChat" rows="1" placeholder="Nachricht an das Handbuch …" aria-label="Nachricht an den Chat"></textarea>
+            <button class="pill-send" type="submit" id="sendChat" aria-label="Senden">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="6 11 12 5 18 11"></polyline></svg>
+            </button>
+          </form>
+        </div>
+
+        <div class="assistant-foot">
+          <button class="btn ghost" id="resetBtn" type="button">Fragebogen neu starten</button>
+          <div class="foot-note" id="footNote">Der Fragebogen kommt ohne KI aus. Für Chat und „Mit KI ausformulieren“ wird Ihr eigenes Claude-Guthaben genutzt — die erste Anfrage fragt um Erlaubnis.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ausgangslage">
+    <div class="section-head">
+      <div><div class="eyebrow">Warum das relevant ist</div><h2>Ausgangslage</h2></div>
+      <div class="stand mono">Stand: 2026-09-06</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="num">54,5&nbsp;%</div>
+        <div class="lbl">der deutschen Unternehmen nutzten im Mai 2026 KI in irgendeiner Form (ggü. 40,9&nbsp;% ein Jahr zuvor)</div>
+        <div class="src">ifo Institut, Umfrage Mai 2026</div>
+      </div>
+      <div class="stat">
+        <div class="num">41&nbsp;%</div>
+        <div class="lbl">aktive Nutzung laut Bitkom-Studienbericht 2026 — im Mittelstand deutlich seltener als bei Großunternehmen</div>
+        <div class="src">Bitkom, Künstliche Intelligenz in Deutschland 2026</div>
+      </div>
+    </div>
+    <p class="caveat">Beide Erhebungen nutzen unterschiedliche Stichproben und Definitionen und sind nicht direkt vergleichbar. Übereinstimmend zeigen sie: Rechtsunsicherheit und fehlendes Know-how sind die am häufigsten genannten Hemmnisse im Mittelstand.</p>
+  </section>
+
+  <section id="schulung">
+    <div class="section-head">
+      <div><div class="eyebrow"><code>grundlagen/</code></div><h2>KI-Schulung, sechs Module</h2></div>
+      <div class="stand mono">≈ 3–3,5&nbsp;Std. gesamt</div>
+    </div>
+    <div class="modules">
+      <div class="module"><div class="n">1</div><div><h3>Grundbegriffe</h3><p>LLM, Token, Kontextfenster, RAG, Fine-Tuning vs. Prompting, Halluzination, Nicht-Determinismus.</p></div></div>
+      <div class="module"><div class="n">2</div><div><h3>Prompting in der Praxis</h3><p>Vier Grundprinzipien, Rollenprompt, Few-Shot, iteratives Nachbessern — mit Übungsvorlagen.</p></div></div>
+      <div class="module"><div class="n">3</div><div><h3>Grenzen und Risiken</h3><p>Halluzination, Prompt Injection, Bias, wann ein KI-Werkzeug NICHT eingesetzt werden sollte.</p></div></div>
+      <div class="module"><div class="n">4</div><div><h3>Datenschutz &amp; Recht in Kürze</h3><p>Was nie in ein nicht freigegebenes Werkzeug darf, AVV, Kennzeichnungspflicht, Hochrisiko-Verbot.</p></div></div>
+      <div class="module"><div class="n">5</div><div><h3>Werkzeuge im Unternehmen</h3><p>Firmenwerkzeug vs. Schatten-KI, eigene Freigabeliste, lokale Alternative bei Vertraulichkeit.</p></div></div>
+      <div class="module"><div class="n">6</div><div><h3>Vertiefung nach Rolle</h3><p>Getrennt für Anwender/in, Führungskraft und IT-/Datenschutzverantwortliche.</p></div></div>
+      <div class="module appendix"><div class="n mono">?</div><div><h3>Wissenscheck</h3><p>15 Fragen mit Lösungsschlüssel als Selbsttest zu allen sechs Modulen.</p></div></div>
+      <div class="module appendix"><div class="n mono">▸</div><div><h3>Schulungsleitfaden</h3><p>Agenda für einen Halbtags-Workshop, Übungsanleitung, Teilnahmebestätigung.</p></div></div>
+    </div>
+  </section>
+
+  <section id="anwendungsfaelle">
+    <div class="section-head">
+      <div><div class="eyebrow"><code>anwendungsfaelle/</code></div><h2>Backlog, priorisiert nach Aufwand</h2></div>
+      <div class="stand mono">0 von 10 ausgearbeitet</div>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>#</th><th>Anwendungsfall</th><th>Branche(n)</th><th>Aufwand</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Angebotserstellung aus Kundenanfragen</td><td>Handwerk, Zulieferer</td><td>niedrig</td><td><span class="pill">Vorschlag</span></td></tr>
+          <tr><td>2</td><td>Tägliche E-Mail-Postfach-Zusammenfassung und Priorisierung</td><td>alle</td><td>niedrig</td><td><span class="pill">Vorschlag</span></td></tr>
+          <tr><td>3</td><td>Automatische Beantwortung von Standard-Kundenanfragen</td><td>alle, bes. Logistik</td><td>mittel</td><td><span class="pill">Vorschlag</span></td></tr>
+          <tr><td>4</td><td>Belegerfassung und Buchhaltungsvorbereitung</td><td>alle</td><td>mittel</td><td><span class="pill">Vorschlag</span></td></tr>
+          <tr><td>5</td><td>Vorbereitung von Zahlungserinnerungen (Mahnwesen)</td><td>alle</td><td>niedrig</td><td><span class="pill">Vorschlag</span></td></tr>
+          <tr><td>6</td><td>Meeting- und Baustellenprotokolle aus Audioaufnahmen</td><td>Handwerk, Ingenieurbüro</td><td>mittel</td><td><span class="pill">Vorschlag</span></td></tr>
+          <tr><td>7</td><td>Wartungsberichte und technische Kurzdokumentation</td><td>Maschinenbau, Zulieferer</td><td>mittel</td><td><span class="pill">Vorschlag</span></td></tr>
+          <tr><td>8</td><td>Übersetzung technischer Dokumente und Korrespondenz</td><td>Zulieferer, Maschinenbau</td><td>niedrig</td><td><span class="pill">Vorschlag</span></td></tr>
+          <tr><td>9</td><td>Lieferanten- und Preisanfragen bündeln und vergleichen</td><td>Einkauf, Logistik</td><td>mittel</td><td><span class="pill">Vorschlag</span></td></tr>
+          <tr><td>10</td><td>Vertriebs- und Angebotstexte für Marketing</td><td>alle</td><td>niedrig</td><td><span class="pill">Vorschlag</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caveat">Jeder Fall folgt bei Ausarbeitung derselben Vorlage: Ausgangslage, Lösungsansatz, Umsetzung, Kosten, Nutzen, Grenzen (mind. drei Fehlerquellen), Datenschutz. Fragen Sie die Auskunft oben, welcher Fall zu Ihrem Problem passt.</p>
+  </section>
+
+  <section id="werkzeuge">
+    <div class="section-head">
+      <div><div class="eyebrow"><code>werkzeuge/</code></div><h2>Kurze Auswahlhilfe</h2></div>
+      <div class="stand mono">Preise: [PRÜFEN] beim Anbieter</div>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-card"><div class="situation">Feste Abläufe zwischen E-Mail, ERP, Ablage</div><p><b>n8n</b> (self-hostbar) oder Make. n8n ist die lokale Alternative zu Cloud-Only-Plattformen.</p></div>
+      <div class="tool-card"><div class="situation">RAG- und Agenten-Plattform</div><p><b>Dify</b> oder <b>Langflow</b> — beide nicht automatisch produktionssicher konfiguriert.</p></div>
+      <div class="tool-card"><div class="situation">Interne Chatoberfläche, lokale Modelle</div><p><b>Open WebUI</b> mit <b>Ollama</b> — Daten verlassen die eigene Infrastruktur nicht.</p></div>
+      <div class="tool-card"><div class="situation">Viele Modelle hinter einer Schnittstelle</div><p><b>LiteLLM</b> als Gateway — wird selbst zur sicherheitskritischen Komponente.</p></div>
+      <div class="tool-card"><div class="situation">Dokumentenlastige Wissenssuche</div><p><b>RAGFlow</b>, <b>Haystack</b> oder <b>LlamaIndex</b> — Chunking, Quellenbezug, Retrieval-Evaluation prüfen.</p></div>
+      <div class="tool-card"><div class="situation">Messbare Qualität statt Demo-Eindruck</div><p><b>Opik</b> oder Haystack-Evaluation — Testset vor jedem Pilotbetrieb.</p></div>
+    </div>
+  </section>
+
+  <section id="rahmen">
+    <div class="section-head">
+      <div><div class="eyebrow"><code>recht/</code> · <code>sicherheit/</code></div><h2>Rechtlicher und technischer Rahmen</h2></div>
+      <div class="stand mono">Stand: 2026-09-06</div>
+    </div>
+    <div class="tile-row">
+      <div class="tile">
+        <div class="tag">Orientierung, keine Rechtsberatung</div>
+        <h3>DSGVO &amp; EU AI Act</h3>
+        <ul>
+          <li>AVV nötig, sobald ein externer Dienst personenbezogene Daten verarbeitet (Art. 28 DSGVO).</li>
+          <li>Kennzeichnungspflicht für Kunden-Chatbots seit 2. August 2026 (Art. 50 EU AI Act).</li>
+          <li>Automatisierte Bewertung von Bewerbungen gilt als Hochrisiko (Anhang III) — kein Anwendungsfall dazu in diesem Repo.</li>
+        </ul>
+      </div>
+      <div class="tile">
+        <div class="tag">Bedrohungsmodell</div>
+        <h3>Technische Sicherheit</h3>
+        <ul>
+          <li>Prompt Injection: externe Texte können versteckte Anweisungen enthalten (OWASP GenAI LLM Top 10 2025).</li>
+          <li>Mindestkontrollen: Tool-Allowlist, menschliche Freigabe vor irreversiblen Aktionen, Secrets-Trennung.</li>
+          <li>Pilotfreigabe erst mit Testset, Verantwortlichem, Abschaltweg und Rollback.</li>
+        </ul>
+      </div>
+      <div class="tile">
+        <div class="tag">Grundsatz</div>
+        <h3>Lokale Alternative</h3>
+        <ul>
+          <li>Wenn Daten das Haus nicht verlassen dürfen: offenes Modell über Ollama auf eigener Infrastruktur.</li>
+          <li>Ersetzt keine Prüfung von Backups, Telemetrie und Administrationszugängen.</li>
+          <li>Wird in jedem Anwendungsfall genannt, der einen Cloud-Anbieter als Hauptweg vorschlägt.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="wirtschaftlichkeit">
+    <div class="section-head">
+      <div><div class="eyebrow"><code>wirtschaftlichkeit/</code></div><h2>Rechenrahmen statt Behauptungen</h2></div>
+      <div class="stand mono">nie Prozent ohne Rechnung</div>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Größe</th><th>Formel</th></tr></thead>
+        <tbody>
+          <tr><td>Kosten je Vorgang</td><td>(Eingabe-Tokens × Preis) + (Ausgabe-Tokens × Preis) — Faustregel: 1 Token ≈ 0,75 dt. Wörter</td></tr>
+          <tr><td>Einrichtung</td><td>Einrichtungsstunden × Stundensatz (Stundensatz als Annahme kennzeichnen)</td></tr>
+          <tr><td>Amortisation</td><td>Einmalige Kosten ÷ (Ersparnis je Monat − laufende Kosten je Monat)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="studies">
+      <div class="study">Noy &amp; Zhang, <i>Science</i> (2023), <a href="https://www.science.org/doi/10.1126/science.adh2586" target="_blank" rel="noopener">DOI 10.1126/science.adh2586</a> — Schreibaufgaben mit ChatGPT: rund 40&nbsp;% weniger Zeit, 18&nbsp;% höher bewertete Qualität. Kontrollierte Studie mit Hochschulabsolventen, nicht im deutschen Mittelstand.</div>
+      <div class="study">Brynjolfsson, Li &amp; Raymond, NBER Working Paper 31161 (2023) / QJE (2025), <a href="https://www.nber.org/papers/w31161" target="_blank" rel="noopener">nber.org/papers/w31161</a> — Kundenservice mit KI-Assistent: 14&nbsp;% mehr gelöste Vorgänge/Std. im Schnitt, 34&nbsp;% bei unerfahrenen Beschäftigten.</div>
+    </div>
+  </section>
+
+  <section id="quellen">
+    <div class="section-head">
+      <div><div class="eyebrow"><code>quellen/</code></div><h2>Kuratierte externe Projekte</h2></div>
+      <div class="stand mono">Sterne = Popularität, kein Qualitätsurteil</div>
+    </div>
+    <div class="src-groups">
+      <div class="src-group">
+        <h3>Plattformen &amp; Frameworks</h3>
+        <div class="src-list">
+          <a href="https://github.com/langgenius/dify" target="_blank" rel="noopener">Dify</a>
+          <a href="https://github.com/langflow-ai/langflow" target="_blank" rel="noopener">Langflow</a>
+          <a href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener">Open WebUI</a>
+          <a href="https://github.com/ollama/ollama" target="_blank" rel="noopener">Ollama</a>
+          <a href="https://github.com/BerriAI/litellm" target="_blank" rel="noopener">LiteLLM</a>
+          <a href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener">LlamaIndex</a>
+          <a href="https://github.com/deepset-ai/haystack" target="_blank" rel="noopener">Haystack</a>
+          <a href="https://github.com/infiniflow/ragflow" target="_blank" rel="noopener">RAGFlow</a>
+          <a href="https://github.com/comet-ml/opik" target="_blank" rel="noopener">Opik</a>
+        </div>
+      </div>
+      <div class="src-group">
+        <h3>Recht &amp; Sicherheit</h3>
+        <div class="src-list">
+          <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener">EU 2024/1689 (EUR-Lex)</a>
+          <a href="https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/tree/main/2025" target="_blank" rel="noopener">OWASP GenAI LLM Top 10 2025</a>
+          <a href="https://github.com/GenAI-Gurus/awesome-eu-ai-act" target="_blank" rel="noopener">awesome-eu-ai-act</a>
+        </div>
+      </div>
+      <div class="src-group">
+        <h3>Workflow-Sammlungen (ungeprüft)</h3>
+        <div class="src-list">
+          <a href="https://github.com/enescingoz/awesome-n8n-templates" target="_blank" rel="noopener">awesome-n8n-templates</a>
+          <a href="https://github.com/Zie619/n8n-workflows" target="_blank" rel="noopener">n8n-workflows</a>
+          <a href="https://github.com/wassupjay/n8n-free-templates" target="_blank" rel="noopener">n8n-free-templates</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Alle Beispiele beziehen sich auf die fiktive Muster Metallbau GmbH, 85 Mitarbeiter. Rechtliche Aussagen sind Orientierung, keine Rechtsberatung. Preise ohne gesicherte Quelle sind als <code>[PRÜFEN]</code> zu behandeln, nicht als Zahl zu verwenden.</p>
+    <p>Code: MIT · Texte und Inhalte: CC BY 4.0 · Diese Seite fasst das Repository zusammen und ersetzt es nicht.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var KB = "KONTEXT — Wissensbasis \"KI-Handbuch Mittelstand\"\n\n" +
+    "Dies ist die Wissensbasis eines Repositoriums fuer KI-Automatisierung im deutschen Mittelstand. Zielgruppe: Geschaeftsfuehrer, Abteilungsleiter, IT-Verantwortliche in Maschinenbau, Zulieferbetrieben, Ingenieurbueros, Logistik, Handwerk; Betriebe 10-500 Mitarbeiter ohne Data-Science-Team. Alle Beispiele im Repo beziehen sich auf die fiktive Muster Metallbau GmbH, 85 Mitarbeiter. Stand aller Angaben: 2026-09-06.\n\n" +
+    "REGELN FUER IHRE ANTWORTEN (unbedingt einhalten):\n" +
+    "- Antworten Sie auf Deutsch, in Sie-Form, kurze Saetze, keine Marketingsprache, keine Superlative, keine Emojis.\n" +
+    "- Formatieren Sie als einfachen Text ohne Markdown-Sternchen oder Ueberschriften-Raute; fuer Aufzaehlungen einfache Gedankenstriche.\n" +
+    "- Erfinden Sie keine Preise, Modellnamen oder Fakten. Ist etwas nicht in dieser Wissensbasis enthalten oder unsicher, sagen Sie das offen statt zu raten, und kennzeichnen Sie es als offen bzw. [PRUEFEN].\n" +
+    "- Zeigen Sie Zeitersparnis nur als nachvollziehbare Rechnung (vorher/nachher mal Haeufigkeit), nie als freistehende Prozentzahl.\n" +
+    "- Rechtliche Aussagen sind Orientierung, keine Rechtsberatung — immer mit Datumsstand, bei Unsicherheit auf eine Fachperson verweisen.\n" +
+    "- Schlagen Sie niemals automatisierte Bewertung oder Auswahl von Personen vor (z. B. Bewerber-Scoring) — das ist EU-AI-Act-Hochrisiko.\n" +
+    "- Wenn ein Cloud-Anbieter genannt wird und Datenschutz/Vertraulichkeit relevant sein koennte, nennen Sie die lokale Alternative (Ollama mit offenem Modell).\n" +
+    "- Sie sind kein Ersatz fuer Rechts-, Steuer- oder Datenschutzberatung im Einzelfall.\n\n" +
+    "STRUKTUR DES REPOS:\n\n" +
+    "grundlagen/ — vollstaendige KI-Schulung, 6 Module + Wissenscheck (15 Fragen) + Schulungsleitfaden:\n" +
+    "1 Grundbegriffe: LLM, Token, Kontextfenster, Systemprompt, RAG, Fine-Tuning vs. Prompting, Embeddings, Halluzination, Nicht-Determinismus.\n" +
+    "2 Prompting in der Praxis: vier Grundprinzipien (Rolle/Ziel, Kontext, Format, Beispiel), Rollenprompt, Few-Shot, in Schritte zerlegen, iteratives Nachbessern.\n" +
+    "3 Grenzen und Risiken: Halluzination, Prompt Injection (OWASP GenAI LLM Top 10 2025), Bias, wann ein KI-Werkzeug NICHT eingesetzt werden sollte.\n" +
+    "4 Datenschutz und Recht in Kuerze: was nie in ein nicht freigegebenes Werkzeug darf, AVV (Art. 28 DSGVO), Kennzeichnungspflicht Art. 50 EU AI Act seit 2.8.2026 (Uebergangsfrist bestehender Systeme bis 2.12.2026), Hochrisiko-Verbot bei Personenbewertung.\n" +
+    "5 Werkzeuge im Unternehmen: Firmenwerkzeug vs. Schatten-KI (privater Zugang), eigene Freigabeliste, lokale Alternative bei Vertraulichkeit, Kostenkontrolle.\n" +
+    "6 Vertiefung nach Rolle: Anwender/in, Fuehrungskraft (Freigabe, Kostenkontrolle, keine Personalentscheidung ohne Pruefung), IT-/Datenschutzverantwortliche (Mindestkontrollen, Evaluation, Freigabeliste).\n" +
+    "Zusaetzlich evaluation.md: Testset (20-50 typische Faelle + 5-10 schwierige), Messgroessen (Aufgabenrichtigkeit, Quellenbezug, Vollstaendigkeit, Abstention, Formatvaliditaet, Nacharbeit, Latenz, Kosten, Sicherheitsverhalten), Regressionstests bei Modell-/Prompt-/Workflow-Aenderung.\n\n" +
+    "anwendungsfaelle/ — nur Vorlage vorhanden (VORLAGE.md mit 7 Punkten: Ausgangslage, Loesungsansatz, Umsetzung, Kosten, Nutzen, Grenzen, Datenschutz). Noch KEIN Fall ausgearbeitet, nur Backlog (Status 'Vorschlag'):\n" +
+    "1 Angebotserstellung aus Kundenanfragen (Handwerk/Zulieferer, niedriger Aufwand)\n" +
+    "2 Taegliche E-Mail-Postfach-Zusammenfassung/Priorisierung (alle, niedrig)\n" +
+    "3 Automatische Beantwortung von Standard-Kundenanfragen/Auftragsstatus (alle, bes. Logistik, mittel)\n" +
+    "4 Belegerfassung/Buchhaltungsvorbereitung (alle, mittel)\n" +
+    "5 Zahlungserinnerungen/Mahnwesen (alle, niedrig)\n" +
+    "6 Meeting-/Baustellenprotokolle aus Audio (Handwerk/Ingenieurbuero, mittel)\n" +
+    "7 Wartungsberichte/technische Kurzdokumentation (Maschinenbau/Zulieferer, mittel)\n" +
+    "8 Uebersetzung technischer Dokumente (Zulieferer/Maschinenbau, niedrig)\n" +
+    "9 Lieferanten-/Preisanfragen buendeln (Einkauf/Logistik, mittel)\n" +
+    "10 Vertriebs-/Angebotstexte Marketing (alle, niedrig)\n" +
+    "Weiterer ungeprueften Backlog: Wareneingangskontrolle per Bilderkennung, Reklamationsmanagement, interne Wissenssuche/RAG-Chatbot (Kennzeichnungspflicht beachten), Ersatzteil-Identifikation, Tourenplanung, vorausschauende Instandhaltung, Schulungsunterlagen erstellen, Normen-Recherche, Stellenanzeigen formulieren (ausdruecklich KEIN Bewerber-Scoring).\n\n" +
+    "vorlagen/ — Prompts zum Kopieren; aktuell schulung-prompting-uebungen.md mit 5 Uebungen zu Modul 2.\n" +
+    "workflows/ — aktuell leer, vorgesehen fuer n8n-/Make-Exporte.\n\n" +
+    "werkzeuge/ — Auswahlhilfe: n8n (self-hostbar) oder Make/Zapier fuer feste Workflows; Dify oder Langflow fuer RAG+Agenten-Plattformen; Open WebUI mit Ollama fuer lokale Chat-Oberflaeche; LiteLLM als Provider-Gateway; vLLM/llama.cpp fuer High-Throughput bzw. lokales Serving; RAGFlow/Haystack/LlamaIndex fuer Dokumentensuche; Opik/DSPy fuer Evaluation. Cloud-LLM-Anbieter: OpenAI, Anthropic, Mistral AI, Azure OpenAI Service (EU-Region waehlbar). OCR: Tesseract (lokal), Azure AI Document Intelligence, Mistral OCR. Transkription: Whisper (lokal betreibbar). ALLE Preise sind [PRUEFEN] — aendern sich haeufig, nicht schaetzen.\n\n" +
+    "recht/ — DSGVO-Fragen (welche Daten verlassen das Haus, wer verarbeitet sie, AVV nach Art. 28 DSGVO noetig sobald ein externer Dienst personenbezogene Daten verarbeitet, DSFA im Zweifel bei umfangreicher/sensibler Verarbeitung); EU AI Act Art. 50 Kennzeichnungspflicht fuer Chatbots mit Kundenkontakt seit 2.8.2026, Uebergangsfrist bestehender generativer Systeme bis 2.12.2026, Bussgeldrahmen bis 15 Mio Euro oder 3% Jahresumsatz (niedrigerer Wert gilt fuer Unternehmen); Anhang III Hochrisiko-Anwendungen (automatisierte Bewerberauswahl, Leistungsbeurteilung, Bonitaetspruefung — deshalb KEIN Anwendungsfall dazu im Repo); Prompt Injection als technisches Risiko (OWASP GenAI LLM Top 10 2025, aeltere 2023-Fassung archiviert); lokale Alternative (Ollama) als Grundsatz bei Vertraulichkeit.\n\n" +
+    "sicherheit/ — Bedrohungsmodell: Prompt Injection, Sensitive Information Disclosure, Insecure Output Handling, Excessive Agency, RAG-/Embedding-Schwaechen, Unbounded Consumption. Mindestkontrollen-Tabelle: Rechte (kleinstmoeglich), Tools (Allowlist), Freigabe (menschlich vor irreversiblen Aktionen), Eingaben/Ausgaben (untrusted behandeln, validieren), Secrets (kein Klartext), Netzwerk (Egress begrenzen), Protokollierung, Limits (Groesse/Laufzeit/Kosten), Updates, Wiederherstellung. Pilotfreigabe erst mit Testset, benannter fachlicher Verantwortung, Abschaltweg, Datenflussdiagramm, Rollback; externe Eingaben duerfen im Pilot keine Zahlung/Bestellung/Vertragsaenderung/Personenentscheidung ausloesen.\n\n" +
+    "wirtschaftlichkeit/ — Formeln: Kosten je Vorgang = (Eingabe-Tokens x Preis je Eingabe-Token) + (Ausgabe-Tokens x Preis je Ausgabe-Token), Faustregel 1 Token entspricht etwa 0,75 deutschen Woertern; Einmalige Kosten = Einrichtungsstunden x Stundensatz; Zeitersparnis je Vorgang = Zeit vorher minus Zeit nachher, Ersparnis je Monat = Zeitersparnis x Haeufigkeit je Monat, Amortisation in Monaten = Einmalige Kosten geteilt durch (Ersparnis je Monat in Euro minus laufende Kosten je Monat). Anbietervergleich nach Preis je Vorgang (nicht je Token), Serverstandort, Verfuegbarkeit AVV, lokale Alternative, Lock-in. Studien: Noy und Zhang (Science 2023, DOI 10.1126/science.adh2586) — Schreibaufgaben mit ChatGPT bei 453 Berufstaetigen: rund 40% weniger Zeit, 18% hoeher bewertete Qualitaet, kontrollierte Studie mit Hochschulabsolventen, nicht im deutschen Mittelstand gemessen. Brynjolfsson, Li und Raymond (NBER Working Paper 31161, 2023, QJE 2025) — 5179 Kundenservice-Mitarbeitende: durchschnittlich 14% mehr geloeste Vorgaenge pro Stunde, bei unerfahrenen Beschaeftigten 34% mehr, bei erfahrenen kaum Effekt.\n\n" +
+    "quellen/ — Ausgangslage: ifo-Umfrage Mai 2026 zeigt 54,5% Unternehmen nutzen KI (ggue. 40,9% Vorjahr); Bitkom-Studienbericht 2026 zeigt 41% aktive Nutzung — unterschiedliche Methodik, nicht direkt vergleichbar, beide zeigen KMU nutzen seltener als Grossunternehmen. Kuratierte Open-Source-Tools, Stand 2026-09-06 (Sterne = Popularitaetssignal, keine Qualitaetsaussage): Dify, Langflow, Open WebUI, LangChain/LangGraph, llama.cpp, vLLM, RAGFlow, OpenHands, LiteLLM, LlamaIndex, DSPy, Haystack, Opik, Pydantic AI. Archiviert bzw. nicht mehr aktiv gepflegt: Flowise (archiviert 13.8.2026), Continue, Semantic Kernel (Nachfolger Microsoft Agent Framework). Grosse, ungeprüfte Workflow-Sammlungen fuer n8n/Make: awesome-n8n-templates, n8n-automation-templates-5000, n8n-workflows, n8n-free-templates.\n\n" +
+    "WICHTIG: Dieses Repository ist bewusst kurz gehalten. Fuer die meisten Backlog-Eintraege existiert noch KEIN ausgearbeitetes Kapitel — nur der Listeneintrag oben. Sagen Sie das offen, statt Inhalte zu erfinden, die es noch nicht gibt.";
+
+  var RULES_CHAT = KB + "\n\nIHRE ROLLE JETZT: Direkte Auskunft im Chat.\nBeantworten Sie die Frage der Person direkt und konkret auf Basis der Wissensbasis oben, in maximal 6 Saetzen. Nennen Sie, wenn passend, das betroffene Modul, den Ordner oder den Anwendungsfall mit Nummer. Wenn die Frage ausserhalb der Wissensbasis liegt, sagen Sie das offen, statt zu raten.";
+
+  // ---------- Fragebogen: fest definierte Fragen, deterministische Auswertung ----------
+  var QUESTIONS = [
+    { key:'rolle', q:'Welche Rolle beschreibt Sie am besten?', options:[
+      {v:'anwender', l:'Anwender/in — nutzt KI-Werkzeuge im Alltag'},
+      {v:'fuehrung', l:'Führungskraft — gibt frei, verantwortet Budget'},
+      {v:'it', l:'IT- oder Datenschutzverantwortliche/r'}
+    ]},
+    { key:'problem', q:'Wo kostet Sie Arbeit ohne KI-Unterstützung aktuell am meisten Zeit?', options:[
+      {v:'angebote', l:'Angebote aus Kundenanfragen erstellen'},
+      {v:'postfach', l:'E-Mail-Postfach sichten und priorisieren'},
+      {v:'buchhaltung', l:'Belege erfassen, Buchhaltung vorbereiten'},
+      {v:'dokumentation', l:'Protokolle oder technische Dokumentation schreiben'},
+      {v:'sonstiges', l:'Etwas anderes oder mehreres gleichzeitig'}
+    ]},
+    { key:'vertraulich', q:'Wie vertraulich sind die Daten, die dabei anfallen?', options:[
+      {v:'hoch', l:'Sehr — Konstruktionsdaten, Preise oder Personaldaten, dürfen das Haus nicht verlassen'},
+      {v:'mittel', l:'Teilweise — kommt auf den Einzelfall an'},
+      {v:'gering', l:'Wenig — überwiegend allgemeine, unkritische Inhalte'}
+    ]},
+    { key:'groesse', q:'Wie groß ist Ihr Betrieb?', options:[
+      {v:'klein', l:'Bis 20 Mitarbeitende'},
+      {v:'mittel', l:'20 bis 100 Mitarbeitende'},
+      {v:'gross', l:'Über 100 Mitarbeitende'}
+    ]}
+  ];
+  var LABELS = {};
+  QUESTIONS.forEach(function(q){ LABELS[q.key] = {}; q.options.forEach(function(o){ LABELS[q.key][o.v] = o.l; }); });
+
+  var ROLLE_TEXT = {
+    anwender: 'Module 1–3 als Basis, danach Modul 6 – Abschnitt „Für Anwenderinnen und Anwender“.',
+    fuehrung: 'Module 1–3 als Basis, danach Modul 6 – Abschnitt „Für Führungskräfte“ (Freigabe, Kostenkontrolle).',
+    it: 'Module 1–3 als Basis, danach Modul 6 – Abschnitt „Für IT- und Datenschutzverantwortliche“ sowie evaluation.md.'
+  };
+  var PROBLEM_TEXT = {
+    angebote: 'Backlog-Fall 1 — Angebotserstellung aus Kundenanfragen (niedriger Aufwand).',
+    postfach: 'Backlog-Fall 2 — Tägliche E-Mail-Postfach-Zusammenfassung und Priorisierung (niedriger Aufwand).',
+    buchhaltung: 'Backlog-Fall 4 — Belegerfassung und Buchhaltungsvorbereitung (mittlerer Aufwand).',
+    dokumentation: 'Backlog-Fall 6 — Meeting-/Baustellenprotokolle, oder Fall 7 — technische Kurzdokumentation (beide mittlerer Aufwand).',
+    sonstiges: 'Kein einzelner Backlog-Fall passt eindeutig — Modul 2 (Prompting) und die vollständige Backlog-Tabelle durchsehen.'
+  };
+  var VERTRAULICH_TEXT = {
+    hoch: 'Lokal bleiben: Open WebUI mit Ollama auf eigener Infrastruktur, kein Cloud-Anbieter für diese Daten.',
+    mittel: 'Cloud-Anbieter mit AVV und EU-Serverstandort prüfen; für den vertraulichen Teil zusätzlich lokale Alternative erwägen.',
+    gering: 'Ein freigegebenes Cloud-Werkzeug reicht meist aus — trotzdem eine eigene Freigabeliste führen (Modul 5).'
+  };
+  var GROESSE_TEXT = {
+    klein: 'Bei dieser Größe reicht meist Selbststudium der Schulung für Einzelpersonen.',
+    mittel: 'Ab dieser Größe lohnt sich ein gemeinsamer Halbtags-Workshop (Schulungsleitfaden).',
+    gross: 'Zuerst Freigabeliste und Pilotverantwortliche benennen, bevor die Schulung breiter ausgerollt wird.'
+  };
+
+  var fb = { step: 0, answers: {} };
+  var fbStage = document.getElementById('fbStage');
+
+  function renderFragebogen(){
+    if (fb.step < QUESTIONS.length){
+      var q = QUESTIONS[fb.step];
+      var pct = Math.round((fb.step / QUESTIONS.length) * 100);
+      fbStage.innerHTML =
+        '<div class="qbar"><div class="qbar-fill" style="width:' + pct + '%"></div></div>' +
+        '<div class="qmeta"><span>Frage ' + (fb.step + 1) + ' von ' + QUESTIONS.length + '</span><span>' + pct + '&nbsp;%</span></div>' +
+        '<div class="qcard"><h3>' + q.q + '</h3><div class="qoptions">' +
+        q.options.map(function(o, i){
+          return '<button class="qoption" type="button" data-v="' + o.v + '"><span class="k">' + String.fromCharCode(65 + i) + '</span><span>' + o.l + '</span></button>';
+        }).join('') +
+        '</div><div class="qnav"><button class="qback" type="button" id="qBackBtn"' + (fb.step === 0 ? ' disabled' : '') + '>Zurück</button></div></div>';
+      fbStage.querySelectorAll('.qoption').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          fb.answers[q.key] = btn.getAttribute('data-v');
+          fb.step++;
+          renderFragebogen();
+        });
+      });
+      document.getElementById('qBackBtn').addEventListener('click', function(){
+        if (fb.step > 0){ fb.step--; renderFragebogen(); }
+      });
+    } else {
+      renderResult();
+    }
+  }
+
+  function renderResult(){
+    var a = fb.answers;
+    var aiAvailable = !!(state.sample && state.granted);
+    fbStage.innerHTML =
+      '<div class="result-grid">' +
+        '<div class="result-tile"><div class="rt-label">Schulung</div><div class="rt-value">' + ROLLE_TEXT[a.rolle] + '</div></div>' +
+        '<div class="result-tile"><div class="rt-label">Anwendungsfall</div><div class="rt-value">' + PROBLEM_TEXT[a.problem] + '</div></div>' +
+        '<div class="result-tile"><div class="rt-label">Werkzeug-Ansatz</div><div class="rt-value">' + VERTRAULICH_TEXT[a.vertraulich] + '</div></div>' +
+        '<div class="result-tile"><div class="rt-label">Nächster Schritt</div><div class="rt-value">' + GROESSE_TEXT[a.groesse] + '</div></div>' +
+      '</div>' +
+      '<div class="result-actions">' +
+        '<button class="btn ghost" type="button" id="fbBackBtn">Zurück zu den Fragen</button>' +
+        (aiAvailable ? '<button class="btn" type="button" id="fbAiBtn">Mit KI ausformulieren</button>' : '') +
+      '</div>' +
+      '<div id="fbAiOut"></div>';
+    document.getElementById('fbBackBtn').addEventListener('click', function(){ fb.step = QUESTIONS.length - 1; renderFragebogen(); });
+    if (aiAvailable){
+      document.getElementById('fbAiBtn').addEventListener('click', function(){ runFbAi(a); });
+    }
+  }
+
+  function runFbAi(answers){
+    if (!state.sample || !state.granted || state.busy) return;
+    state.busy = true;
+    var btn = document.getElementById('fbAiBtn');
+    if (btn) btn.disabled = true;
+    var out = document.getElementById('fbAiOut');
+    out.innerHTML = '<div class="ai-summary" id="fbAiText"><span class="typing"><span></span><span></span><span></span></span></div>';
+    var textEl = document.getElementById('fbAiText');
+    var prompt = KB +
+      "\n\nAUFGABE: Eine Person hat folgenden Fragebogen auf der Webseite beantwortet:\n" +
+      "- Rolle: " + LABELS.rolle[answers.rolle] + "\n" +
+      "- Größtes Zeitproblem: " + LABELS.problem[answers.problem] + "\n" +
+      "- Vertraulichkeit der Daten: " + LABELS.vertraulich[answers.vertraulich] + "\n" +
+      "- Betriebsgröße: " + LABELS.groesse[answers.groesse] + "\n" +
+      "Schreiben Sie in maximal 6 Saetzen eine persoenliche, konkrete Empfehlung: welches Schulungsmodul zuerst, welcher Backlog-Anwendungsfall (mit Nummer) am ehesten passt, welcher Werkzeug-Ansatz und was zuerst zu klaeren ist. Sprechen Sie die Person direkt in Sie-Form an.";
+
+    state.sample(prompt, {
+      modelTier: 'default',
+      cache: false,
+      onText: function(u){ textEl.textContent = u.text; }
+    }).catch(function(e){
+      textEl.textContent = e.text || '';
+      var msg = copyForError(e.code);
+      if (msg){ textEl.textContent = (e.text ? e.text + '\n\n' : '') + msg; }
+      if (['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(e.code) !== -1){
+        permanentlyHide();
+      }
+    }).finally(function(){
+      state.busy = false;
+      if (btn) btn.disabled = false;
+    });
+  }
+
+  // ---------- Chat (ChatGPT-artig) ----------
+  var state = { sample: null, granted: true, busy: false };
+  var chatSession = { turns: [], transcript: document.getElementById('transcriptChat'), rules: RULES_CHAT };
+  var mode = 'fragebogen';
+
+  var btnFragebogen = document.getElementById('btnModeFragebogen');
+  var btnChat = document.getElementById('btnModeChat');
+  var panelFragebogen = document.getElementById('panelFragebogen');
+  var panelChat = document.getElementById('panelChat');
+  var footNote = document.getElementById('footNote');
+  var statusDot = document.getElementById('statusDot');
+  var resetBtn = document.getElementById('resetBtn');
+
+  function setMode(m){
+    mode = m;
+    btnFragebogen.setAttribute('aria-pressed', String(m === 'fragebogen'));
+    btnChat.setAttribute('aria-pressed', String(m === 'chat'));
+    panelFragebogen.hidden = m !== 'fragebogen';
+    panelChat.hidden = m !== 'chat';
+    resetBtn.textContent = m === 'fragebogen' ? 'Fragebogen neu starten' : 'Neuer Chat';
+  }
+  btnFragebogen.addEventListener('click', function(){ setMode('fragebogen'); });
+  btnChat.addEventListener('click', function(){ setMode('chat'); });
+
+  function addMessage(role, text){
+    var row = document.createElement('div');
+    row.className = 'msg ' + role;
+    var textWrap = document.createElement('div');
+    textWrap.className = 'msg-text';
+    textWrap.textContent = text;
+    if (role === 'system' || role === 'error'){
+      row.appendChild(textWrap);
+    } else {
+      var avatar = document.createElement('div');
+      avatar.className = 'avatar';
+      avatar.textContent = role === 'user' ? 'Sie' : 'KI';
+      if (role === 'user'){ row.appendChild(textWrap); row.appendChild(avatar); }
+      else { row.appendChild(avatar); row.appendChild(textWrap); }
+    }
+    chatSession.transcript.appendChild(row);
+    chatSession.transcript.scrollTop = chatSession.transcript.scrollHeight;
+    return textWrap;
+  }
+
+  function addTypingRow(){
+    var row = document.createElement('div');
+    row.className = 'msg assistant';
+    var avatar = document.createElement('div');
+    avatar.className = 'avatar';
+    avatar.textContent = 'KI';
+    var textWrap = document.createElement('div');
+    textWrap.className = 'msg-text';
+    textWrap.innerHTML = '<span class="typing"><span></span><span></span><span></span></span>';
+    row.appendChild(avatar);
+    row.appendChild(textWrap);
+    chatSession.transcript.appendChild(row);
+    chatSession.transcript.scrollTop = chatSession.transcript.scrollHeight;
+    return textWrap;
+  }
+
+  function trimTurns(turns){
+    while (turns.length > 16) turns.shift();
+  }
+
+  function copyForError(code){
+    switch(code){
+      case 'not_granted': return 'Sie haben die KI-Auskunft fuer diese Ansicht nicht erlaubt. Der Fragebogen bleibt ohne KI nutzbar.';
+      case 'sampling_disabled': return 'Die KI-Auskunft ist fuer dieses Konto nicht verfuegbar.';
+      case 'not_declared':
+      case 'capability_disabled':
+      case 'capability_removed': return 'Die KI-Auskunft ist in dieser Ansicht nicht verfuegbar.';
+      case 'rate_limited': return 'Gerade zu viele Anfragen. Bitte in Kuerze erneut versuchen.';
+      case 'session_expired': return 'Bitte erneut anmelden, um die KI-Auskunft zu nutzen.';
+      case 'refused': return 'Diese Anfrage wurde nicht beantwortet. Bitte anders formulieren.';
+      case 'empty_completion': return 'Keine Antwort erhalten. Bitte die Frage kuerzer oder konkreter stellen.';
+      case 'prompt_too_large': return 'Das Gespraech ist zu lang geworden. Bitte Chat zuruecksetzen.';
+      case 'cancelled': return null;
+      default: return 'Kurzzeitiger Fehler bei der Anfrage. Bitte erneut versuchen.';
+    }
+  }
+
+  function permanentlyHide(){
+    state.granted = false;
+    footNote.textContent = 'Chat und KI-Zusammenfassung sind in dieser Ansicht nicht verfuegbar. Der Fragebogen funktioniert weiterhin ohne KI.';
+    document.getElementById('formChat').querySelectorAll('button, textarea').forEach(function(e){ e.disabled = true; });
+    document.getElementById('chipsChat').querySelectorAll('button').forEach(function(e){ e.disabled = true; });
+    var aiBtn = document.getElementById('fbAiBtn');
+    if (aiBtn) aiBtn.disabled = true;
+  }
+
+  function askChat(userVisibleText){
+    if (!state.sample || !state.granted || state.busy) return;
+    state.busy = true;
+    statusDot.style.background = 'var(--flag)';
+
+    addMessage('user', userVisibleText);
+    chatSession.turns.push({ role: 'user', content: userVisibleText });
+    trimTurns(chatSession.turns);
+
+    var combined = [{ role: 'user', content: chatSession.rules }].concat(chatSession.turns);
+    var thinking = addTypingRow();
+
+    state.sample(combined, {
+      modelTier: 'default',
+      cache: false,
+      onText: function(u){ thinking.textContent = u.text; chatSession.transcript.scrollTop = chatSession.transcript.scrollHeight; }
+    }).then(function(res){
+      chatSession.turns.push({ role: 'assistant', content: res.text });
+      if (res.truncated){ addMessage('system', 'Antwort wurde gekuerzt — fuer mehr Detail gezielter nachfragen.'); }
+    }).catch(function(e){
+      if (e.text){ thinking.textContent = e.text; }
+      else { thinking.parentElement.remove(); }
+      var msg = copyForError(e.code);
+      if (msg){ addMessage('error', msg); }
+      if (['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(e.code) !== -1){
+        permanentlyHide();
+      }
+    }).finally(function(){
+      state.busy = false;
+      statusDot.style.background = 'var(--accent)';
+      chatSession.transcript.scrollTop = chatSession.transcript.scrollHeight;
+    });
+  }
+
+  var formChat = document.getElementById('formChat');
+  var inputChat = document.getElementById('inputChat');
+  formChat.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var v = inputChat.value.trim();
+    if (!v) return;
+    inputChat.value = '';
+    inputChat.style.height = 'auto';
+    askChat(v);
+  });
+  document.getElementById('chipsChat').addEventListener('click', function(ev){
+    var t = ev.target.closest('.chip');
+    if (!t) return;
+    askChat(t.textContent);
+  });
+  inputChat.addEventListener('input', function(){ inputChat.style.height = 'auto'; inputChat.style.height = Math.min(inputChat.scrollHeight, 128) + 'px'; });
+  inputChat.addEventListener('keydown', function(ev){
+    if (ev.key === 'Enter' && !ev.shiftKey){
+      ev.preventDefault();
+      formChat.requestSubmit();
+    }
+  });
+
+  resetBtn.addEventListener('click', function(){
+    if (mode === 'fragebogen'){
+      fb.step = 0;
+      fb.answers = {};
+      renderFragebogen();
+    } else {
+      chatSession.turns = [];
+      chatSession.transcript.innerHTML = '<div class="msg system"><div class="msg-text">Ich beantworte Fragen zu diesem Handbuch: Schulung, Anwendungsfälle, Recht, Werkzeuge, Kosten. Ich erfinde keine Preise oder Rechtsauskünfte — was nicht in diesem Repo steht, sage ich offen.</div></div>';
+    }
+  });
+
+  renderFragebogen();
+
+  if (window.claude && typeof window.claude.use === 'function'){
+    window.claude.use('sample').then(function(fn){
+      if (!fn){ permanentlyHide(); return; }
+      state.sample = fn;
+      if (fb.step >= QUESTIONS.length) renderResult();
+    }).catch(function(){ permanentlyHide(); });
+  } else {
+    permanentlyHide();
+  }
+})();
+</script>

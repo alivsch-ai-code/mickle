@@ -3,9 +3,16 @@
 Dieses Repository ist so aufgebaut, dass es als gebündelte Wissensbasis
 dient — für Sie selbst, für Kolleginnen und Kollegen und für einen
 KI-Assistenten (z. B. Claude, ChatGPT), dem Sie dieses Repo als Kontext
-geben, um Fragen von Betrieben zu KI-Automatisierung zu beantworten. Diese
-Datei ist die Bedienungsanleitung dafür: Sie legt fest, wie aus den
-Inhalten geantwortet werden soll, und wohin welche Frage führt.
+geben, um Fragen von Betrieben zu Automatisierung zu beantworten — KI-gestützt
+und klassisch. Diese Datei ist die Bedienungsanleitung dafür: Sie legt fest,
+wie aus den Inhalten geantwortet werden soll, und wohin welche Frage führt.
+
+Zwei Tiefen: KI-Automatisierung ist über Schulung, Anwendungsfall-Backlog
+und EU-AI-Act-Kapitel am weitesten ausgearbeitet. Klassische Automatisierung
+(DevOps, Fertigungssteuerung, Robotik, Branchensoftware in Gesundheitswesen,
+Handel, Finanzen, Smart Home, Marketing) ist als Werkzeugkatalog in
+[`werkzeuge/`](werkzeuge/) vertreten — dort nur Steckbriefe (Lizenz, Hosting,
+Zweck), ohne eigene Anwendungsfälle, Kostenrechnung oder Rechtskapitel.
 
 Für Menschen, die neu hier sind, ist [`README.md`](README.md) der
 Einstieg. Diese Datei richtet sich zusätzlich an ein System, das aus dem
@@ -32,8 +39,16 @@ Repo automatisch antwortet.
   Bewerber-Scoring) vorschlagen — siehe Hochrisiko-Hinweis in
   [`recht/README.md`](recht/README.md#3-eu-ai-act--hochrisiko-anwendungen-anhang-iii).
 - **Bei Cloud-Anbietern immer die lokale/offene Alternative nennen**
-  (Ollama mit offenem Modell), wenn Datenschutz oder Vertraulichkeit eine
-  Rolle spielen könnten.
+  (Ollama mit offenem Modell für KI-Werkzeuge; bei klassischer
+  Automatisierung die im Werkzeug-Steckbrief genannte selbst hostbare
+  Option), wenn Datenschutz oder Vertraulichkeit eine Rolle spielen
+  könnten.
+- **EU-AI-Act-Aussagen gelten nur für Werkzeuge mit KI-Komponente.** Bei
+  klassischen Automatisierungswerkzeugen (z. B. Ansible, Terraform,
+  Jenkins, ROS, ArduPilot) wird keine KI-Act-Pflicht unterstellt, die
+  nicht zutrifft — DSGVO-Fragen (Auftragsverarbeitung, Serverstandort)
+  können trotzdem relevant sein, sobald personenbezogene Daten
+  verarbeitet werden.
 
 ## Quellen- und Aktualitätsregeln
 
@@ -71,12 +86,13 @@ Repo automatisch antwortet.
 | Ein konkretes Abteilungsproblem, Umsetzung, Kosten/Nutzen eines Falls     | [`anwendungsfaelle/`](anwendungsfaelle/)               |
 | Fertige Prompts zum Kopieren                                              | [`vorlagen/`](vorlagen/)                               |
 | Fertige n8n-/Make-Workflow-Dateien                                        | [`workflows/`](workflows/)                             |
-| Welches Werkzeug/welcher Anbieter für welchen Zweck, inkl. Serverstandort | [`werkzeuge/`](werkzeuge/)                             |
+| Welches Werkzeug/welcher Anbieter für welchen Zweck, inkl. Serverstandort — KI-Werkzeuge UND klassische Automatisierung (DevOps, Fertigung, Finanzen, Gesundheitswesen, Handel, Smart Home, Robotik, Marketing) | [`werkzeuge/`](werkzeuge/)                             |
 | DSGVO, AVV, EU AI Act, Hochrisiko-Einstufung                              | [`recht/`](recht/)                                     |
 | Technische Sicherheitskontrollen für LLM, RAG und Agenten                 | [`sicherheit/`](sicherheit/)                           |
 | Kostenrechnung, ROI, Anbietervergleich-Kriterien                          | [`wirtschaftlichkeit/`](wirtschaftlichkeit/)           |
 | Evaluation, Testsets, Messgrößen und Regressionen                         | [`grundlagen/evaluation.md`](grundlagen/evaluation.md) |
 | Vergleichbare externe Projekte, größere Workflow-Sammlungen               | [`quellen/`](quellen/)                                 |
+| Zusammenfassende Webseite mit KI-Auskunft (keine Repo-Quelle für Fakten)  | [`webseite/`](webseite/)                               |
 
 ## Wenn eine Information fehlt
 
@@ -111,3 +127,9 @@ Information:
 - Kein Ranking oder Testurteil zu Anbietern über die in
   [`werkzeuge/`](werkzeuge/) und [`wirtschaftlichkeit/`](wirtschaftlichkeit/)
   genannten, nachvollziehbaren Kriterien hinaus.
+- Für die nicht-KI-Werkzeugkategorien in [`werkzeuge/`](werkzeuge/)
+  (DevOps, Fertigung, Finanzen, Gesundheitswesen, Handel, Smart Home,
+  Robotik, Marketing) gibt es bewusst keine Anwendungsfälle, keine
+  Kostenrechnung und kein Rechtskapitel — nur geprüfte Werkzeug-Steckbriefe.
+  Wer Umsetzungstiefe für eine dieser Branchen sucht, findet sie (noch)
+  nicht in diesem Repo.

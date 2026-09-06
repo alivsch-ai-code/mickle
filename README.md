@@ -1,19 +1,37 @@
-# KI-Automatisierung für den Mittelstand
+# Automatisierung für den Mittelstand
 
 Lizenz: Code MIT, Texte CC BY 4.0 · Stand: 2026-09-06
 
-Dieses Repository sammelt sofort einsetzbare Lösungen für KI-Automatisierung in
-kleinen und mittleren Unternehmen im deutschsprachigen Raum. Kein Lehrbuch,
-keine Grundlagenerklärungen — für jedes Problem: Ausgangslage, Umsetzung,
-Kosten, Nutzen, Grenzen und Datenschutz, jeweils mit nachvollziehbarer
-Rechnung statt behaupteter Prozentzahlen.
+Dieses Repository sammelt sofort einsetzbare Lösungen für Automatisierung in
+kleinen und mittleren Unternehmen im deutschsprachigen Raum — KI-gestützt
+und klassisch. Kein Lehrbuch, keine Grundlagenerklärungen — für jedes
+Problem: Ausgangslage, Umsetzung, Kosten, Nutzen, Grenzen und Datenschutz,
+jeweils mit nachvollziehbarer Rechnung statt behaupteter Prozentzahlen.
+
+Zwei Tiefen im Repo, offen benannt:
+
+- **KI-Automatisierung** ist am weitesten ausgearbeitet: Schulung
+  ([`grundlagen/`](grundlagen/)), Anwendungsfall-Backlog
+  ([`anwendungsfaelle/`](anwendungsfaelle/)), EU-AI-Act-Kapitel
+  ([`recht/`](recht/)).
+- **Klassische Automatisierung** (DevOps, Fertigungssteuerung, Robotik,
+  Branchensoftware) ist als Werkzeugkatalog in [`werkzeuge/`](werkzeuge/)
+  vertreten, mit derselben Prüftiefe bei Lizenz und Hosting, aber ohne
+  eigene Anwendungsfälle oder Rechtskapitel — die EU-AI-Act-Inhalte in
+  [`recht/`](recht/) gelten nur, soweit ein Werkzeug tatsächlich KI
+  einsetzt.
 
 ## Zielgruppe
 
-Geschäftsführer, Abteilungsleiter und IT-Verantwortliche in Maschinenbau,
-Zulieferbetrieben, Ingenieurbüros, Logistik und Handwerk. Betriebe mit
-10 bis 500 Mitarbeitern, ohne Data-Science-Team und ohne sechsstelliges
-Budget.
+Geschäftsführer, Abteilungsleiter, IT-/DevOps-Verantwortliche und
+Fachbereiche in kleinen und mittleren Unternehmen im deutschsprachigen
+Raum, ohne eigenes Data-Science- oder Plattform-Team und ohne
+sechsstelliges Budget. Kernbranchen bleiben Maschinenbau, Zulieferbetriebe,
+Ingenieurbüros, Logistik und Handwerk — dort ist die Ausarbeitung am
+weitesten. Der Werkzeugkatalog in [`werkzeuge/`](werkzeuge/) deckt daneben
+IT/DevOps, Fertigungssteuerung, Finanzen/Handel, Gesundheitswesen,
+Einzelhandel/E-Commerce, Gebäudeautomation, Robotik und Marketing ab, in
+geringerer Tiefe (Werkzeug-Steckbrief statt vollständigem Anwendungsfall).
 
 ## Ausgangslage
 
@@ -52,12 +70,13 @@ häufigsten genannten Hemmnisse im Mittelstand. Quellen und Einordnung:
 | [`anwendungsfaelle/`](anwendungsfaelle/)               | Ein Ordner pro Anwendungsfall, benannt nach dem Problem                                |
 | [`vorlagen/`](vorlagen/)                               | Prompts zum Kopieren, thematisch sortiert, inkl. Übungsprompts der Schulung           |
 | [`workflows/`](workflows/)                             | Exportierte n8n-/Make-Szenarien als JSON                                               |
-| [`werkzeuge/`](werkzeuge/)                             | Werkzeug- und Anbieterübersicht: Automatisierungsplattformen, LLM-APIs, lokale Modelle |
+| [`werkzeuge/`](werkzeuge/)                             | Werkzeug- und Anbieterübersicht: Automatisierungsplattformen, LLM-APIs, lokale Modelle, plus Katalog klassischer Automatisierung nach Branche (DevOps, Fertigung, Finanzen, Gesundheitswesen, Handel, Smart Home, Robotik, Marketing) |
 | [`recht/`](recht/)                                     | DSGVO, Auftragsverarbeitung, EU AI Act Art. 50                                         |
 | [`sicherheit/`](sicherheit/)                           | Technische Sicherheitskontrollen für LLM, RAG und Agenten                              |
 | [`wirtschaftlichkeit/`](wirtschaftlichkeit/)           | Kostenmodelle, ROI-Rechnung, Anbietervergleich                                         |
 | [`grundlagen/evaluation.md`](grundlagen/evaluation.md) | Testsets, Messgrößen und Regressionstests für LLM-Anwendungen                          |
 | [`quellen/`](quellen/)                                 | Verwandte externe Projekte (Workflow-Sammlungen, Compliance-Vorlagen, Kostenrechner)   |
+| [`webseite/`](webseite/)                               | Eigenständige HTML-Seite, die das Repo zusammenfasst, mit eingebetteter KI-Auskunft   |
 
 Für die Nutzung dieses Repos als Wissensbasis durch einen KI-Assistenten
 (nicht nur als Nachschlagewerk für Menschen) siehe [`AGENTS.md`](AGENTS.md).
