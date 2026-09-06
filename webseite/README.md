@@ -11,15 +11,16 @@ Veröffentlicht als Claude-Artifact:
 
 Stand: 2026-09-06.
 
-## Drei Bereiche
+## Aufbau: eine reine Schulungsseite
 
-Über die obere Reiterleiste erreichbar:
-
-| Bereich | Inhalt |
-| --- | --- |
-| **Auskunft** | Fragebogen und Chat (siehe unten) |
-| **Kurs** | Der eigentliche Kurs-Player: dreizehn vollständige Lektionen mit Sidebar-Navigation und Fortschrittsanzeige |
-| **Referenz** | Kondensierte Zahlen/Tabellen aus `README.md`, `werkzeuge/`, `recht/`, `sicherheit/`, `wirtschaftlichkeit/`, `quellen/` |
+Keine Reiter, kein separater "Referenz"-Bereich mehr — die Seite ist von
+oben nach unten genau eine Sache: Titelblock, dann der Kurs, dann direkt
+darunter die eingebettete KI-Auskunft, dann Fußzeile. Eine frühere Fassung
+hatte zusätzlich einen dritten Bereich mit kondensierten Zahlen/Tabellen
+aus dem übrigen Repo ("Referenz") und eine Reiterleiste zum Umschalten
+zwischen Auskunft/Kurs/Referenz — beides wurde bewusst entfernt, damit die
+Seite ausschließlich Schulung ist und die KI-Auskunft nicht hinter einem
+zusätzlichen Klick versteckt bleibt.
 
 ### Der Kurs
 
@@ -47,7 +48,8 @@ Betreiber übermittelt.
 ## Fragebogen und Chat
 
 Zwei getrennte Bausteine, umschaltbar über die Reiter im Kopf des
-Assistenten-Kastens (Bereich "Auskunft"):
+Assistenten-Kastens, der direkt unter dem Kurs auf derselben Seite sitzt
+(Abschnitt "Auskunft zum Kurs"):
 
 - **Fragebogen:** ein klassischer Klick-Fragebogen ohne KI — vier feste
   Fragen (Rolle, größtes Zeitproblem, Vertraulichkeit der Daten,
@@ -134,9 +136,11 @@ Seite mit KI-Auskunft bleibt der Claude-Artifact-Link oben maßgeblich.
    Bei einer neuen Lektion: neue `LESSON_*`-Konstante ergänzen und einen
    Eintrag im `LESSONS`-Array hinzufügen.
 3. Bei anderen inhaltlichen Änderungen im Repo (Zahlen, Rechtsfristen,
-   Werkzeuge): sowohl die `KB`-Konstante (für die KI-Auskunft) als auch
-   den Bereich "Referenz" (für die sichtbare Anzeige) von Hand nachziehen
-   — beides muss zum tatsächlichen Repo-Stand passen.
+   Werkzeuge), die nicht in einer einzelnen Lektion stehen: die
+   `KB`-Konstante nachziehen — sie ist die einzige Stelle, an der solche
+   Angaben noch auf der Seite vorkommen (kein sichtbarer Referenz-Bereich
+   mehr), muss aber trotzdem zum tatsächlichen Repo-Stand passen, weil die
+   KI-Auskunft sonst veraltet antwortet.
 4. Vor dem Veröffentlichen einmalig `node --check` auf den extrahierten
    `<script>`-Inhalt laufen lassen (reine Syntaxprüfung, kein Test-Loop) —
    bei handgeschriebenen Template-Strings mit vielen Sonderzeichen ist das

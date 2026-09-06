@@ -69,18 +69,6 @@
     .tb-cell{border-bottom:1px solid var(--line);}
   }
 
-  /* ---------- Top tabs ---------- */
-  .tabs-outer{position:sticky; top:0; z-index:20; background:var(--bg); border-bottom:1px solid var(--line-strong);}
-  .tabs{display:flex; gap:.3rem; overflow-x:auto; padding:.6rem 1.5rem 0; max-width:78rem; margin:0 auto; scrollbar-width:thin;}
-  .tabs button{
-    flex:none; font-family:var(--font-display); font-weight:600; font-size:.84rem; letter-spacing:.02em;
-    text-decoration:none; color:var(--ink-soft); background:var(--surface-2);
-    border:1px solid var(--line-strong); border-bottom:none; border-radius:4px 4px 0 0;
-    padding:.55rem 1.1rem .6rem; white-space:nowrap; cursor:pointer;
-  }
-  .tabs button:hover{color:var(--ink); background:var(--surface);}
-  .tabs button[aria-selected="true"]{background:var(--surface); color:var(--ink); box-shadow:inset 0 2px 0 var(--accent);}
-  .tabs button:focus-visible{outline:2px solid var(--accent); outline-offset:-2px;}
 
   section.view{padding:2.6rem 0 3.5rem;}
   .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.6rem;}
@@ -207,41 +195,6 @@
   details.qa[open] summary::before{content:"▾ "; }
   details.qa .qa-a{padding:0 .9rem .9rem; font-size:.9rem; color:var(--ink-soft); max-width:42rem;}
 
-  /* ---------- Reference view (Stats/backlog/tools/legal/econ/sources) ---------- */
-  .stat-row{display:grid; grid-template-columns:repeat(auto-fit, minmax(15rem,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
-  .stat{background:var(--surface); padding:1.4rem 1.5rem;}
-  .stat .num{font-family:var(--font-mono); font-size:2.6rem; font-weight:600; font-variant-numeric:tabular-nums; color:var(--accent-ink); line-height:1;}
-  .stat .lbl{margin-top:.5rem; font-size:.92rem; color:var(--ink-soft);}
-  .stat .src{margin-top:.6rem; font-size:.76rem; color:var(--ink-faint);}
-  .caveat{margin-top:1rem; font-size:.85rem; color:var(--ink-soft); border-left:2px solid var(--flag); padding-left:.8rem;}
-  .ref-block{margin-bottom:2.6rem;}
-  .ref-block h3{font-size:1.15rem;}
-  .table-scroll{overflow-x:auto; border:1px solid var(--line);}
-  table.ref{width:100%; border-collapse:collapse; font-size:.88rem; min-width:38rem;}
-  table.ref thead th{text-align:left; font-family:var(--font-display); font-weight:700; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); background:var(--surface-2); padding:.6rem .8rem; border-bottom:1px solid var(--line-strong);}
-  table.ref tbody td{padding:.6rem .8rem; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-soft);}
-  table.ref tbody tr:last-child td{border-bottom:none;}
-  table.ref tbody td:first-child{font-family:var(--font-mono); color:var(--ink-faint);}
-  .pill{display:inline-block; font-size:.72rem; font-family:var(--font-mono); border:1px solid var(--line-strong); color:var(--ink-soft); padding:.1rem .5rem; border-radius:20px; white-space:nowrap;}
-  .tool-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(17rem,1fr)); gap:1rem;}
-  .tool-card{border:1px solid var(--line); border-radius:var(--radius); padding:1.1rem 1.2rem; background:var(--surface);}
-  .tool-card .situation{font-size:.78rem; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; font-family:var(--font-display); font-weight:700; margin-bottom:.4rem;}
-  .tool-card p{font-size:.88rem; margin:0; color:var(--ink-soft);}
-  .tool-card b{color:var(--ink);}
-  .tile-row{display:grid; grid-template-columns:repeat(auto-fit, minmax(16rem,1fr)); gap:1rem;}
-  .tile{border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:var(--radius); padding:1.2rem 1.3rem; background:var(--surface);}
-  .tile h4{font-size:1.02rem;}
-  .tile ul{margin:0; padding-left:1.1rem; font-size:.86rem; color:var(--ink-soft);}
-  .tile li{margin-bottom:.4rem;}
-  .tile .tag{display:inline-block; font-size:.7rem; font-family:var(--font-mono); color:var(--flag); background:var(--flag-soft); padding:.1rem .5rem; border-radius:3px; margin-bottom:.7rem;}
-  .src-groups{display:grid; grid-template-columns:repeat(auto-fit, minmax(15rem,1fr)); gap:1.6rem;}
-  .src-group h4{font-size:.85rem; letter-spacing:.03em; color:var(--ink-faint); text-transform:uppercase; font-family:var(--font-display); margin-bottom:.7rem;}
-  .src-list{display:flex; flex-wrap:wrap; gap:.4rem;}
-  .src-list a{font-size:.8rem; font-family:var(--font-mono); text-decoration:none; border:1px solid var(--line); padding:.25rem .55rem; border-radius:3px; color:var(--ink-soft); background:var(--surface);}
-  .src-list a:hover{border-color:var(--accent); color:var(--accent-ink);}
-  .studies{margin-top:1.2rem; display:flex; flex-direction:column; gap:.8rem;}
-  .study{font-size:.86rem; color:var(--ink-soft); border-left:2px solid var(--line-strong); padding-left:.9rem;}
-
   footer{padding:2.4rem 0 3.5rem; border-top:1px solid var(--line);}
   footer p{font-size:.82rem; color:var(--ink-faint); margin:0 0 .5rem;}
   [hidden]{display:none !important;}
@@ -254,7 +207,7 @@
       <div>
         <div class="eyebrow">Interaktive Schulung &amp; KI-Auskunft</div>
         <h1>KI-Schulung für den Mittelstand</h1>
-        <p class="sub">Zwölf Lektionen zum Durcharbeiten — Grundbegriffe bis LLM-Optimierung — mit einer KI-Auskunft, die Sie orientiert oder Fragen zum Stoff beantwortet.</p>
+        <p class="sub">Dreizehn Lektionen zum Durcharbeiten — Grundbegriffe bis Multi-Agenten-Systeme — mit einer eingebetteten KI-Auskunft, die Sie orientiert oder Fragen zum Stoff beantwortet.</p>
       </div>
     </div>
     <div class="tb-grid">
@@ -267,20 +220,35 @@
   </div>
 </div>
 
-<div class="tabs-outer">
-  <nav class="tabs" role="tablist" aria-label="Bereiche">
-    <button role="tab" data-view="auskunft" aria-selected="true">Auskunft</button>
-    <button role="tab" data-view="kurs" aria-selected="false">Kurs</button>
-    <button role="tab" data-view="referenz" aria-selected="false">Referenz</button>
-  </nav>
-</div>
-
 <main class="wrap">
 
-  <!-- ======================= VIEW: AUSKUNFT ======================= -->
+  <!-- ======================= KURS ======================= -->
+  <section class="view" id="view-kurs">
+    <div class="section-head">
+      <div><div class="eyebrow"><code>grundlagen/</code></div><h2>Kurs: dreizehn Lektionen</h2></div>
+      <div class="stand mono" id="courseStandNote">Fortschritt wird nur in diesem Browser gespeichert</div>
+    </div>
+
+    <div class="course">
+      <nav class="course-nav" id="courseNav" aria-label="Kursinhalt">
+        <div class="course-group-label">Basis-Schulung, ca. 3–3,5 Std.</div>
+        <ol id="courseNavBasis"></ol>
+        <div class="course-group-label">Technische Vertiefung</div>
+        <ol id="courseNavVertiefung"></ol>
+        <div class="course-progress">
+          <span id="progressText">0 / 13 gelesen</span>
+          <div class="course-progress-bar"><div class="course-progress-fill" id="progressFill" style="width:0%"></div></div>
+        </div>
+      </nav>
+
+      <div class="lesson" id="lessonPane"><!-- von renderLesson() gefüllt --></div>
+    </div>
+  </section>
+
+  <!-- ======================= EINGEBETTETE KI-AUSKUNFT ======================= -->
   <section class="view" id="view-auskunft">
     <div class="section-head">
-      <div><div class="eyebrow">Interaktiv</div><h2>Auskunft zum Kurs</h2></div>
+      <div><div class="eyebrow">Eingebettet</div><h2>Auskunft zum Kurs</h2></div>
       <div class="stand mono">antwortet nur auf Basis dieser Schulung</div>
     </div>
 
@@ -326,172 +294,6 @@
     </div>
   </section>
 
-  <!-- ======================= VIEW: KURS ======================= -->
-  <section class="view" id="view-kurs" hidden>
-    <div class="section-head">
-      <div><div class="eyebrow"><code>grundlagen/</code></div><h2>Kurs: dreizehn Lektionen</h2></div>
-      <div class="stand mono" id="courseStandNote">Fortschritt wird nur in diesem Browser gespeichert</div>
-    </div>
-
-    <div class="course">
-      <nav class="course-nav" id="courseNav" aria-label="Kursinhalt">
-        <div class="course-group-label">Basis-Schulung, ca. 3–3,5 Std.</div>
-        <ol id="courseNavBasis"></ol>
-        <div class="course-group-label">Technische Vertiefung</div>
-        <ol id="courseNavVertiefung"></ol>
-        <div class="course-progress">
-          <span id="progressText">0 / 13 gelesen</span>
-          <div class="course-progress-bar"><div class="course-progress-fill" id="progressFill" style="width:0%"></div></div>
-        </div>
-      </nav>
-
-      <div class="lesson" id="lessonPane"><!-- von renderLesson() gefüllt --></div>
-    </div>
-  </section>
-
-  <!-- ======================= VIEW: REFERENZ ======================= -->
-  <section class="view" id="view-referenz" hidden>
-    <div class="section-head">
-      <div><div class="eyebrow">Zahlen, Werkzeuge, Recht</div><h2>Referenz</h2></div>
-      <div class="stand mono">Stand: 2026-09-06</div>
-    </div>
-
-    <div class="ref-block">
-      <h3>Ausgangslage</h3>
-      <div class="stat-row">
-        <div class="stat">
-          <div class="num">54,5&nbsp;%</div>
-          <div class="lbl">der deutschen Unternehmen nutzten im Mai 2026 KI in irgendeiner Form (ggü. 40,9&nbsp;% ein Jahr zuvor)</div>
-          <div class="src">ifo Institut, Umfrage Mai 2026</div>
-        </div>
-        <div class="stat">
-          <div class="num">41&nbsp;%</div>
-          <div class="lbl">aktive Nutzung laut Bitkom-Studienbericht 2026 — im Mittelstand deutlich seltener als bei Großunternehmen</div>
-          <div class="src">Bitkom, Künstliche Intelligenz in Deutschland 2026</div>
-        </div>
-      </div>
-      <p class="caveat">Beide Erhebungen nutzen unterschiedliche Stichproben und Definitionen und sind nicht direkt vergleichbar. Übereinstimmend zeigen sie: Rechtsunsicherheit und fehlendes Know-how sind die am häufigsten genannten Hemmnisse im Mittelstand.</p>
-    </div>
-
-    <div class="ref-block">
-      <h3>Anwendungsfall-Backlog, priorisiert nach Aufwand</h3>
-      <div class="table-scroll">
-        <table class="ref">
-          <thead><tr><th>#</th><th>Anwendungsfall</th><th>Branche(n)</th><th>Aufwand</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td>1</td><td>Angebotserstellung aus Kundenanfragen</td><td>Handwerk, Zulieferer</td><td>niedrig</td><td><span class="pill">Vorschlag</span></td></tr>
-            <tr><td>2</td><td>Tägliche E-Mail-Postfach-Zusammenfassung und Priorisierung</td><td>alle</td><td>niedrig</td><td><span class="pill">Vorschlag</span></td></tr>
-            <tr><td>3</td><td>Automatische Beantwortung von Standard-Kundenanfragen</td><td>alle, bes. Logistik</td><td>mittel</td><td><span class="pill">Vorschlag</span></td></tr>
-            <tr><td>4</td><td>Belegerfassung und Buchhaltungsvorbereitung</td><td>alle</td><td>mittel</td><td><span class="pill">Vorschlag</span></td></tr>
-            <tr><td>5</td><td>Vorbereitung von Zahlungserinnerungen (Mahnwesen)</td><td>alle</td><td>niedrig</td><td><span class="pill">Vorschlag</span></td></tr>
-            <tr><td>6</td><td>Meeting- und Baustellenprotokolle aus Audioaufnahmen</td><td>Handwerk, Ingenieurbüro</td><td>mittel</td><td><span class="pill">Vorschlag</span></td></tr>
-            <tr><td>7</td><td>Wartungsberichte und technische Kurzdokumentation</td><td>Maschinenbau, Zulieferer</td><td>mittel</td><td><span class="pill">Vorschlag</span></td></tr>
-            <tr><td>8</td><td>Übersetzung technischer Dokumente und Korrespondenz</td><td>Zulieferer, Maschinenbau</td><td>niedrig</td><td><span class="pill">Vorschlag</span></td></tr>
-            <tr><td>9</td><td>Lieferanten- und Preisanfragen bündeln und vergleichen</td><td>Einkauf, Logistik</td><td>mittel</td><td><span class="pill">Vorschlag</span></td></tr>
-            <tr><td>10</td><td>Vertriebs- und Angebotstexte für Marketing</td><td>alle</td><td>niedrig</td><td><span class="pill">Vorschlag</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="ref-block">
-      <h3>Werkzeuge: kurze Auswahlhilfe</h3>
-      <div class="tool-grid">
-        <div class="tool-card"><div class="situation">Feste Abläufe zwischen E-Mail, ERP, Ablage</div><p><b>n8n</b> (self-hostbar) oder Make. n8n ist die lokale Alternative zu Cloud-Only-Plattformen.</p></div>
-        <div class="tool-card"><div class="situation">RAG- und Agenten-Plattform</div><p><b>Dify</b> oder <b>Langflow</b> — beide nicht automatisch produktionssicher konfiguriert.</p></div>
-        <div class="tool-card"><div class="situation">Interne Chatoberfläche, lokale Modelle</div><p><b>Open WebUI</b> mit <b>Ollama</b> — Daten verlassen die eigene Infrastruktur nicht.</p></div>
-        <div class="tool-card"><div class="situation">IT/DevOps-Automatisierung</div><p><b>Ansible</b>, <b>Jenkins</b> offen; <b>Terraform</b> seit 2023 nicht mehr OSI-Open-Source — Alternative: <b>OpenTofu</b>.</p></div>
-        <div class="tool-card"><div class="situation">Dokumentenlastige Wissenssuche</div><p><b>RAGFlow</b>, <b>Haystack</b> oder <b>LlamaIndex</b> — Chunking, Quellenbezug, Retrieval-Evaluation prüfen.</p></div>
-        <div class="tool-card"><div class="situation">Messbare Qualität statt Demo-Eindruck</div><p><b>Opik</b> oder Haystack-Evaluation — Testset vor jedem Pilotbetrieb.</p></div>
-      </div>
-    </div>
-
-    <div class="ref-block">
-      <h3>Rechtlicher und technischer Rahmen</h3>
-      <div class="tile-row">
-        <div class="tile">
-          <div class="tag">Orientierung, keine Rechtsberatung</div>
-          <h4>DSGVO &amp; EU AI Act</h4>
-          <ul>
-            <li>AVV nötig, sobald ein externer Dienst personenbezogene Daten verarbeitet (Art. 28 DSGVO).</li>
-            <li>Kennzeichnungspflicht für Kunden-Chatbots seit 2. August 2026 (Art. 50 EU AI Act).</li>
-            <li>Automatisierte Bewertung von Bewerbungen gilt als Hochrisiko (Anhang III).</li>
-          </ul>
-        </div>
-        <div class="tile">
-          <div class="tag">Bedrohungsmodell</div>
-          <h4>Technische Sicherheit</h4>
-          <ul>
-            <li>Prompt Injection: externe Texte können versteckte Anweisungen enthalten (OWASP GenAI LLM Top 10 2025).</li>
-            <li>Mindestkontrollen: Tool-Allowlist, menschliche Freigabe, Secrets-Trennung.</li>
-            <li>Pilotfreigabe erst mit Testset, Verantwortlichem, Abschaltweg und Rollback.</li>
-          </ul>
-        </div>
-        <div class="tile">
-          <div class="tag">Grundsatz</div>
-          <h4>Lokale Alternative</h4>
-          <ul>
-            <li>Wenn Daten das Haus nicht verlassen dürfen: offenes Modell über Ollama auf eigener Infrastruktur.</li>
-            <li>Ersetzt keine Prüfung von Backups, Telemetrie und Administrationszugängen.</li>
-            <li>Gilt auch für klassische Automatisierung mit einer offenen Alternative (z. B. OpenTofu statt Terraform).</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="ref-block">
-      <h3>Wirtschaftlichkeit: Rechenrahmen</h3>
-      <div class="table-scroll">
-        <table class="ref">
-          <thead><tr><th>Größe</th><th>Formel</th></tr></thead>
-          <tbody>
-            <tr><td>Kosten je Vorgang</td><td>(Eingabe-Tokens × Preis) + (Ausgabe-Tokens × Preis) — Faustregel: 1 Token ≈ 0,75 dt. Wörter</td></tr>
-            <tr><td>Einrichtung</td><td>Einrichtungsstunden × Stundensatz (Stundensatz als Annahme kennzeichnen)</td></tr>
-            <tr><td>Amortisation</td><td>Einmalige Kosten ÷ (Ersparnis je Monat − laufende Kosten je Monat)</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="studies">
-        <div class="study">Noy &amp; Zhang, <i>Science</i> (2023), <a href="https://www.science.org/doi/10.1126/science.adh2586" target="_blank" rel="noopener">DOI 10.1126/science.adh2586</a> — Schreibaufgaben mit ChatGPT: rund 40&nbsp;% weniger Zeit, 18&nbsp;% höher bewertete Qualität.</div>
-        <div class="study">Brynjolfsson, Li &amp; Raymond, NBER Working Paper 31161 (2023) / QJE (2025), <a href="https://www.nber.org/papers/w31161" target="_blank" rel="noopener">nber.org/papers/w31161</a> — Kundenservice mit KI-Assistent: 14&nbsp;% mehr gelöste Vorgänge/Std. im Schnitt.</div>
-      </div>
-    </div>
-
-    <div class="ref-block">
-      <h3>Kuratierte externe Projekte</h3>
-      <div class="src-groups">
-        <div class="src-group">
-          <h4>Plattformen &amp; Frameworks</h4>
-          <div class="src-list">
-            <a href="https://github.com/langgenius/dify" target="_blank" rel="noopener">Dify</a>
-            <a href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener">Open WebUI</a>
-            <a href="https://github.com/ollama/ollama" target="_blank" rel="noopener">Ollama</a>
-            <a href="https://github.com/BerriAI/litellm" target="_blank" rel="noopener">LiteLLM</a>
-            <a href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener">LlamaIndex</a>
-            <a href="https://github.com/deepset-ai/haystack" target="_blank" rel="noopener">Haystack</a>
-            <a href="https://github.com/comet-ml/opik" target="_blank" rel="noopener">Opik</a>
-          </div>
-        </div>
-        <div class="src-group">
-          <h4>Recht &amp; Sicherheit</h4>
-          <div class="src-list">
-            <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener">EU 2024/1689 (EUR-Lex)</a>
-            <a href="https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/tree/main/2025" target="_blank" rel="noopener">OWASP GenAI LLM Top 10 2025</a>
-          </div>
-        </div>
-        <div class="src-group">
-          <h4>Klassische Automatisierung</h4>
-          <div class="src-list">
-            <a href="https://github.com/ansible/ansible" target="_blank" rel="noopener">Ansible</a>
-            <a href="https://github.com/opentofu/opentofu" target="_blank" rel="noopener">OpenTofu</a>
-            <a href="https://github.com/home-assistant/core" target="_blank" rel="noopener">Home Assistant</a>
-            <a href="https://github.com/node-red/node-red" target="_blank" rel="noopener">Node-RED</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer>
@@ -504,17 +306,6 @@
 <script>
 (function(){
   "use strict";
-
-  /* ================= Tabs ================= */
-  var tabs = document.querySelectorAll('.tabs button[role="tab"]');
-  var views = { auskunft: document.getElementById('view-auskunft'), kurs: document.getElementById('view-kurs'), referenz: document.getElementById('view-referenz') };
-  tabs.forEach(function(t){
-    t.addEventListener('click', function(){
-      tabs.forEach(function(o){ o.setAttribute('aria-selected', String(o === t)); });
-      Object.keys(views).forEach(function(k){ views[k].hidden = (k !== t.dataset.view); });
-      window.scrollTo(0, 0);
-    });
-  });
 
   /* ================= Kursinhalte ================= */
 
